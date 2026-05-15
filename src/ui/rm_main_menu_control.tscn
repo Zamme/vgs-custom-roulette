@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://b88liafpq11p5"]
+
+[ext_resource type="Script" uid="uid://dw57d5ev5yuek" path="res://src/scripts/rm_main_menu_control.gd" id="1_rr8yi"]
+[ext_resource type="FontFile" uid="uid://bdrkor4sy7njn" path="res://assets/fonts/DejaVuSans.ttf" id="1_tayro"]
+[ext_resource type="Script" uid="uid://dnq2qg8vi7qb2" path="res://src/scripts/crear_ruleta_button.gd" id="3_michw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_38vqq"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="RM_Main_Menu_Control" type="Control" unique_id=402477359]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rr8yi")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=270138700]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_38vqq")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=406163549]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=600662649]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=603459675]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_tayro")
+theme_override_font_sizes/font_size = 51
+text = "Roulette Maker"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1135595757]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_constants/separation = 20
+
+[node name="EditorRuletaButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=684026686]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_tayro")
+theme_override_font_sizes/font_size = 43
+text = "Editor Ruletes"
+script = ExtResource("3_michw")
+
+[node name="EditorJocsButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=652225381]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_tayro")
+theme_override_font_sizes/font_size = 43
+text = "Editor Jocs"
+script = ExtResource("3_michw")
+
+[node name="JugarButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=48228315]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_tayro")
+theme_override_font_sizes/font_size = 43
+text = "Jugar"
+script = ExtResource("3_michw")
+
+[connection signal="button_up" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/EditorRuletaButton" to="." method="_on_crear_ruleta_button_button_up"]
+[connection signal="button_up" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/EditorJocsButton" to="." method="_on_editor_jocs_button_button_up"]
+[connection signal="button_up" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/JugarButton" to="." method="_on_jugar_button_button_up"]

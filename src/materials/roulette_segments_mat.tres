@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://chye85nl73itv"]
+
+[ext_resource type="Shader" uid="uid://dqhn70yhf75wq" path="res://src/shaders/radial_cheese_3d_multi_shader.gdshader" id="1_8f7mo"]
+
+[sub_resource type="Gradient" id="Gradient_na1o5"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.33582088, 0.7238806)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1.2513996e-06, 0.4866724, 0.4889909, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xnj1q"]
+gradient = SubResource("Gradient_na1o5")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_8f7mo")
+shader_parameter/segments = 8
+shader_parameter/separation = 0.0010000000475
+shader_parameter/inner_radius = 0.010000000475
+shader_parameter/palette = SubResource("GradientTexture1D_xnj1q")

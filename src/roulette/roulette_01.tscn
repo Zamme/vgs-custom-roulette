@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bdwbwjk4tymch"]
+
+[ext_resource type="PackedScene" uid="uid://b83obrmq0q6dr" path="res://assets/gltfs/roulette_01.glb" id="1_ehawn"]
+[ext_resource type="Script" uid="uid://c5g4wg6x5p054" path="res://src/scripts/roulette_01.gd" id="2_mx286"]
+[ext_resource type="Material" uid="uid://chye85nl73itv" path="res://src/materials/roulette_segments_mat.tres" id="3_m2xos"]
+[ext_resource type="Material" uid="uid://ce42v8lbs0lbj" path="res://src/materials/roulette_mat.tres" id="3_na1o5"]
+[ext_resource type="Material" uid="uid://dq7rlmp4ntg2d" path="res://src/materials/roulette_center_mat.tres" id="4_xnj1q"]
+
+[node name="roulette_01" unique_id=88176997 instance=ExtResource("1_ehawn")]
+script = ExtResource("2_mx286")
+
+[node name="Roulete" parent="." index="0" unique_id=1710337755]
+surface_material_override/0 = ExtResource("3_na1o5")
+
+[node name="Roulete_Center" parent="Roulete" index="0" unique_id=1314051771]
+surface_material_override/0 = ExtResource("4_xnj1q")
+
+[node name="Roulete_001" parent="Roulete/Roulete_Center" index="0" unique_id=1410191963]
+unique_name_in_owner = true
+surface_material_override/0 = ExtResource("3_m2xos")

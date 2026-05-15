@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cb1wx0kkmu66j"]
+
+[ext_resource type="Script" uid="uid://c54a430yk1mx" path="res://src/scripts/game_manager.gd" id="1_x17l7"]
+[ext_resource type="Script" uid="uid://dex3rmiavftk1" path="res://src/scripts/save_load_manager.gd" id="2_2138g"]
+
+[node name="GameManager" type="Node" unique_id=1773128760]
+script = ExtResource("1_x17l7")
+current_init_type = 2
+
+[node name="SaveLoadManager" type="Node" parent="." unique_id=1601281165]
+script = ExtResource("2_2138g")

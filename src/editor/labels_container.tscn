@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b88lk2eulw02q"]
+
+[ext_resource type="Script" uid="uid://3fgln6jycqq6" path="res://src/scripts/labels_container.gd" id="1_ingd1"]
+
+[node name="LabelsContainer" type="Node3D" unique_id=2079780297]
+script = ExtResource("1_ingd1")

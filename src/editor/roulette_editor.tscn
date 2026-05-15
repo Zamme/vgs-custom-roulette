@@ -1,0 +1,229 @@
+[gd_scene format=3 uid="uid://c6o4eo8pwrd7k"]
+
+[ext_resource type="PackedScene" uid="uid://bdwbwjk4tymch" path="res://src/roulette/roulette_01.tscn" id="1_aoee0"]
+[ext_resource type="Script" uid="uid://ccgyemqsp1fud" path="res://src/scripts/roulette_editor.gd" id="1_nacxe"]
+[ext_resource type="FontFile" uid="uid://bdrkor4sy7njn" path="res://assets/fonts/DejaVuSans.ttf" id="4_1408v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1btgg"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1f188"]
+bg_color = Color(0.51430863, 0.27159977, 0.1884602, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1408v"]
+bg_color = Color(0.973535, 0.9735351, 0.973535, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nacxe"]
+
+[sub_resource type="Sky" id="Sky_1btgg"]
+sky_material = SubResource("ProceduralSkyMaterial_nacxe")
+
+[sub_resource type="Environment" id="Environment_aoee0"]
+background_mode = 2
+background_color = Color(0.4996245, 0.27093717, 0.16023058, 1)
+sky = SubResource("Sky_1btgg")
+ambient_light_source = 3
+
+[node name="RouletteEditor" type="Node3D" unique_id=287965655]
+script = ExtResource("1_nacxe")
+
+[node name="EditorUIControl" type="Control" parent="." unique_id=2051062367]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="EditorUIControl" unique_id=1052719210]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1btgg")
+
+[node name="MarginContainer" type="MarginContainer" parent="EditorUIControl/PanelContainer" unique_id=455231613]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EditorUIControl/PanelContainer/MarginContainer" unique_id=1475685865]
+layout_mode = 2
+
+[node name="MenuBar" type="MenuBar" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer" unique_id=647678339]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_1f188")
+
+[node name="OpcionsMenu" type="PopupMenu" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/MenuBar" unique_id=1672546400]
+oversampling_override = 1.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1f188")
+item_count = 4
+item_0/text = "Nova"
+item_0/id = 0
+item_1/text = "Carregar"
+item_1/id = 1
+item_2/text = "Guardar"
+item_2/id = 2
+item_3/text = "Sortir"
+item_3/id = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer" unique_id=287572522]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1408v")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer" unique_id=494808599]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="GuardarRuletaButton" type="Button" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer2" unique_id=1151795820]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_color = Color(0.03137255, 0.8627451, 0.41568628, 1)
+theme_override_fonts/font = ExtResource("4_1408v")
+theme_override_font_sizes/font_size = 32
+text = "Guardar"
+
+[node name="SortirButton" type="Button" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer2" unique_id=1470002803]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_colors/font_color = Color(0.99999994, 0.15611514, 0.4388063, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("4_1408v")
+theme_override_font_sizes/font_size = 32
+text = "Sortir"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer" unique_id=1234838037]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=896095194]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_constants/separation = 31
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1255942207]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer3" unique_id=1427882003]
+layout_mode = 2
+text = "Nom"
+
+[node name="NomLineEdit" type="LineEdit" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer3" unique_id=761157106]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_1408v")
+placeholder_text = "Nom Ruleta"
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=946325820]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer4" unique_id=1861751669]
+layout_mode = 2
+text = "Descripcio"
+
+[node name="DescripcioLineEdit" type="LineEdit" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer4" unique_id=397250682]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_1408v")
+placeholder_text = "Descripcio"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=130970307]
+layout_mode = 2
+
+[node name="SegmentsLabel" type="Label" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=1683757879]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_1408v")
+text = "Segments"
+
+[node name="SegmentsSpinBox" type="SpinBox" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=117726658]
+layout_mode = 2
+min_value = 2.0
+max_value = 64.0
+value = 3.0
+rounded = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=324838007]
+layout_mode = 2
+
+[node name="RadioDev" type="Label" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer2" unique_id=1574524145]
+layout_mode = 2
+text = "Radio Dev"
+
+[node name="RadioDevSpinBox" type="SpinBox" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer2" unique_id=2145200714]
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+value = 0.5
+custom_arrow_step = 0.1
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=35194246]
+layout_mode = 2
+
+[node name="MidaFontLabel" type="Label" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer5" unique_id=975713498]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_1408v")
+text = "Mida Font"
+
+[node name="MidaFontSpinBox" type="SpinBox" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer5" unique_id=620576296]
+layout_mode = 2
+min_value = 10.0
+max_value = 64.0
+value = 20.0
+rounded = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1479677608]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="SubViewport" type="SubViewport" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/SubViewportContainer" unique_id=2134294962]
+handle_input_locally = false
+size = Vector2i(600, 600)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/SubViewportContainer/SubViewport" unique_id=1560083255]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.6956767, 0)
+
+[node name="roulette_01" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/SubViewportContainer/SubViewport" unique_id=1633617811 instance=ExtResource("1_aoee0")]
+unique_name_in_owner = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/SubViewportContainer/SubViewport" unique_id=1941100956]
+environment = SubResource("Environment_aoee0")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1249983183]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_constants/separation = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=682511453]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="SegmentsPropsVBoxContainer" type="VBoxContainer" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer" unique_id=924039726]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PropsPerSegmentLabel" type="Label" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/ScrollContainer/SegmentsPropsVBoxContainer" unique_id=656748110]
+layout_mode = 2
+text = "Props per segment"
+
+[node name="LoadRoulettePopup" type="Popup" parent="EditorUIControl" unique_id=1352277255]
+oversampling_override = 1.0
+title = "Load Roulette"
+initial_position = 1
+size = Vector2i(600, 500)
+visible = true
+borderless = false
+content_scale_aspect = 4
+
+[connection signal="index_pressed" from="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/MenuBar/OpcionsMenu" to="." method="_on_opcions_menu_index_pressed"]
+[connection signal="text_changed" from="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer3/NomLineEdit" to="." method="_on_nom_line_edit_text_changed"]
+[connection signal="text_changed" from="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer4/DescripcioLineEdit" to="." method="_on_descripcio_line_edit_text_changed"]
+[connection signal="value_changed" from="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer/SegmentsSpinBox" to="." method="_on_segments_spin_box_value_changed"]
+[connection signal="value_changed" from="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer2/RadioDevSpinBox" to="." method="_on_radio_dev_spin_box_value_changed"]
+[connection signal="value_changed" from="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer5/MidaFontSpinBox" to="." method="_on_mida_font_spin_box_value_changed"]
