@@ -1,11 +1,31 @@
 class_name SaveLoadManager extends Node
 
+const ROULETTES_DIRNAME = "roulettes"
+const USER_PREFIX = "user://"
+const ROULETTES_FILES_EXT = ".rul"
+
 func _ready() -> void:
 	Globals.save_load_manager = self
 
+func check_roulettes_dir():
+	var dir_path : String = USER_PREFIX + ROULETTES_DIRNAME
+	print(dir_path)
+	if not DirAccess.dir_exists_absolute(dir_path):
+		print("Rouletes dir not found. Creating...")
+		var _error : Error = DirAccess.make_dir_absolute(dir_path)
+		if _error:
+			print("Error: ", _error)
+		else:
+			print("Rouletes dir created succesfully.")
+
+func exists_roulette_file(_roulette_name : String) -> bool:
+	var _roulette_filepath : String = USER_PREFIX + ROULETTES_DIRNAME.path_join(_roulette_name) + ROULETTES_FILES_EXT
+	return FileAccess.file_exists(_roulette_filepath)
+
 func load_roulette(_roulette_name : String):
 	var _roulette_file : ConfigFile = ConfigFile.new()
-	var _roulette_filepath : String = "user://" + _roulette_name + ".rul"
+	var _roulette_filepath : String = USER_PREFIX + ROULETTES_DIRNAME.path_join(_roulette_name) + ROULETTES_FILES_EXT
+	check_roulettes_dir()
 	_roulette_file.load(_roulette_filepath)
 	
 	var _segments : Array = Array()
@@ -32,7 +52,8 @@ func save_roulette(_roulette_info : RouletteInfo) -> bool:
 		_roulete_file.set_value(_segment.s_name, "Name", _segment.s_name)
 		_roulete_file.set_value(_segment.s_name, "Color", _segment.s_color)
 	
-	var _filename : String = "user://" + _roulette_info.r_name + ".rul"
-	var _error : Error = _roulete_file.save(_filename)
+	var _roulette_filepath : String = USER_PREFIX + ROULETTES_DIRNAME.path_join(_roulette_info.r_name) + ROULETTES_FILES_EXT
+	check_roulettes_dir()
+	var _error : Error = _roulete_file.save(_roulette_filepath)
 	_saved = _error == OK
 	return _saved

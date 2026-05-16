@@ -212,14 +212,17 @@ layout_mode = 2
 layout_mode = 2
 text = "Props per segment"
 
-[node name="LoadRoulettePopup" type="Popup" parent="EditorUIControl" unique_id=1352277255]
+[node name="LoadRoulettePopup" type="FileDialog" parent="EditorUIControl" unique_id=436187032]
 oversampling_override = 1.0
-title = "Load Roulette"
+title = "Open a File"
+dialog_hide_on_ok = true
+file_mode = 0
+access = 1
+
+[node name="SaveConfirmationDialog" type="ConfirmationDialog" parent="EditorUIControl" unique_id=1283039132]
+oversampling_override = 1.0
 initial_position = 1
-size = Vector2i(600, 500)
-visible = true
-borderless = false
-content_scale_aspect = 4
+dialog_text = "File exists. Overwrite?"
 
 [connection signal="index_pressed" from="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/MenuBar/OpcionsMenu" to="." method="_on_opcions_menu_index_pressed"]
 [connection signal="text_changed" from="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer3/NomLineEdit" to="." method="_on_nom_line_edit_text_changed"]
@@ -227,3 +230,5 @@ content_scale_aspect = 4
 [connection signal="value_changed" from="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer/SegmentsSpinBox" to="." method="_on_segments_spin_box_value_changed"]
 [connection signal="value_changed" from="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer2/RadioDevSpinBox" to="." method="_on_radio_dev_spin_box_value_changed"]
 [connection signal="value_changed" from="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer5/MidaFontSpinBox" to="." method="_on_mida_font_spin_box_value_changed"]
+[connection signal="file_selected" from="EditorUIControl/LoadRoulettePopup" to="." method="_on_load_roulette_popup_file_selected"]
+[connection signal="confirmed" from="EditorUIControl/SaveConfirmationDialog" to="." method="_on_save_confirmation_dialog_confirmed"]

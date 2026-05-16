@@ -8,8 +8,8 @@ extends Node3D
 @onready var segments_spinbox : SpinBox = $EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer/SegmentsSpinBox
 @onready var radiodev_spinbox : SpinBox = $EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer2/RadioDevSpinBox
 @onready var fontsize_spinbox : SpinBox = $EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer5/MidaFontSpinBox
-@onready var load_roulette_popup : Popup = $EditorUIControl/LoadRoulettePopup
-
+@onready var load_roulette_popup : FileDialog = $EditorUIControl/LoadRoulettePopup
+@onready var save_confirmation_dialog : ConfirmationDialog = $EditorUIControl/SaveConfirmationDialog
 
 var roulette_info: RouletteInfo = RouletteInfo.new("Test Roulette", "This is a test roulette",
 	[SegmentInfo.new("Segment 1", Color.RED), 
@@ -30,11 +30,15 @@ func clean_vbox_children(vbox: VBoxContainer) -> void:
 	for child in vbox.get_children():
 		child.queue_free()
 
-func load_roulette() -> void:
-	roulette_info = Globals.save_load_manager.load_roulette("primera")
+func load_roulette(_roulette_name : String) -> void:
+	roulette_info = Globals.save_load_manager.load_roulette(_roulette_name)
 	update_all_editor()
 	#var _loaded_roulette : RouletteInfo = Globals.save_load_manager.load_roulette("Test Roulette")
 	#_loaded_roulette.print_info()
+
+func save_roulette() -> void:
+	var _saved : bool = Globals.save_load_manager.save_roulette(roulette_info)
+	print("Saved: " + str(_saved))
 
 func update_roulette_info_labels() -> void:
 	nom_line_edit.text = roulette_info.r_name
@@ -97,12 +101,18 @@ func _on_opcions_menu_index_pressed(index: int) -> void:
 		0:
 			pass
 		1:
-			#load_roulette_popup.transient = true
+			load_roulette_popup.exclusive = true
+			load_roulette_popup.transient = true
+			Globals.save_load_manager.check_roulettes_dir()
+			if load_roulette_popup.root_subfolder == "":
+				load_roulette_popup.root_subfolder = Globals.save_load_manager.ROULETTES_DIRNAME
 			load_roulette_popup.popup_centered()
 			#load_roulette()
 		2:
-			var _saved : bool = Globals.save_load_manager.save_roulette(roulette_info)
-			print("Saved: " + str(_saved))
+			if Globals.save_load_manager.exists_roulette_file(roulette_info.r_name):
+				save_confirmation_dialog.popup_centered()
+			else:
+				save_roulette()
 		3:
 			Globals.game_manager.load_main_menu()
 
@@ -111,3 +121,10 @@ func _on_nom_line_edit_text_changed(new_text: String) -> void:
 
 func _on_descripcio_line_edit_text_changed(new_text: String) -> void:
 	roulette_info.r_description = new_text
+
+func _on_load_roulette_popup_file_selected(path: String) -> void:
+	var _roulette_name : String = path.get_basename().get_file()
+	load_roulette(_roulette_name)
+
+func _on_save_confirmation_dialog_confirmed() -> void:
+	save_roulette()
