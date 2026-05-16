@@ -1,0 +1,129 @@
+[gd_scene format=3 uid="uid://docfak8u1lvp1"]
+
+[ext_resource type="Script" uid="uid://ct67q4gpa3ctj" path="res://src/scripts/game_editor_control.gd" id="1_k0fq7"]
+[ext_resource type="PackedScene" uid="uid://ufemu51pac3q" path="res://src/ui/player_editing_h_box.tscn" id="2_0k16j"]
+
+[node name="GameEditorControl" type="Control" unique_id=410234741]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k0fq7")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=559306460]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=786776896]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1086362434]
+layout_mode = 2
+theme_override_constants/separation = 22
+
+[node name="MenuBar" type="MenuBar" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=242865518]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="OptionsMenu" type="PopupMenu" parent="PanelContainer/MarginContainer/VBoxContainer/MenuBar" unique_id=236784791]
+item_count = 4
+item_0/text = "Nou"
+item_0/id = 0
+item_1/text = "Carregar"
+item_1/id = 1
+item_2/text = "Guardar"
+item_2/id = 2
+item_3/text = "Sortir"
+item_3/id = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=696361778]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=917394359]
+layout_mode = 2
+text = "Nom"
+
+[node name="NomJocLineEdit" type="LineEdit" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=160077690]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "nom joc"
+structured_text_bidi_override = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=183582627]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1509886399]
+layout_mode = 2
+text = "Descripcio"
+
+[node name="DescripcioJocLineEdit" type="LineEdit" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=258801754]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "descripcio joc"
+
+[node name="vBoxContainer3" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1271355097]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/vBoxContainer3" unique_id=1286120414]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Jugadors"
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/vBoxContainer3" unique_id=525587007]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/vBoxContainer3/PanelContainer" unique_id=2084034366]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer/vBoxContainer3/PanelContainer/VBoxContainer" unique_id=1958641654]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayersVBox" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/vBoxContainer3/PanelContainer/VBoxContainer/ScrollContainer" unique_id=1025337052]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlayerEditingHBox" parent="PanelContainer/MarginContainer/VBoxContainer/vBoxContainer3/PanelContainer/VBoxContainer/ScrollContainer/PlayersVBox" unique_id=1957268829 instance=ExtResource("2_0k16j")]
+layout_mode = 2
+
+[node name="AddPlayerButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/vBoxContainer3/PanelContainer/VBoxContainer" unique_id=1118858946]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Afegir jugador"
+
+[node name="NewConfirmationDialog" type="ConfirmationDialog" parent="." unique_id=1411183512]
+initial_position = 1
+dialog_text = "Changes not saved will be lost"
+
+[node name="SaveConfirmationDialog" type="ConfirmationDialog" parent="." unique_id=951478787]
+initial_position = 1
+dialog_text = "File exists. Overwrite it?"
+
+[node name="LoadFileDialog" type="FileDialog" parent="." unique_id=788166164]
+title = "Open a File"
+initial_position = 1
+dialog_hide_on_ok = true
+file_mode = 0
+access = 1
+hidden_files_toggle_enabled = false
+folder_creation_enabled = false
+favorites_enabled = false
+recent_list_enabled = false
+deleting_enabled = false
+
+[connection signal="index_pressed" from="PanelContainer/MarginContainer/VBoxContainer/MenuBar/OptionsMenu" to="." method="_on_options_menu_index_pressed"]
+[connection signal="button_up" from="PanelContainer/MarginContainer/VBoxContainer/vBoxContainer3/PanelContainer/VBoxContainer/AddPlayerButton" to="." method="_on_add_player_button_button_up"]

@@ -10,25 +10,33 @@ extends Node3D
 @onready var fontsize_spinbox : SpinBox = $EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer5/MidaFontSpinBox
 @onready var load_roulette_popup : FileDialog = $EditorUIControl/LoadRoulettePopup
 @onready var save_confirmation_dialog : ConfirmationDialog = $EditorUIControl/SaveConfirmationDialog
+@onready var new_confirmation_dialog : ConfirmationDialog = $EditorUIControl/NewConfirmationDialog
 
-var roulette_info: RouletteInfo = RouletteInfo.new("Test Roulette", "This is a test roulette",
+var roulette_info_default: RouletteInfo = RouletteInfo.new("New Roulette", "This is a new roulette",
 	[SegmentInfo.new("Segment 1", Color.RED), 
 		SegmentInfo.new("Segment 2", Color.GREEN), 
 		SegmentInfo.new("Segment 3", Color.BLUE)], 0.5)
+
+var roulette_info : RouletteInfo
 
 var segment_props_vbox_container : PackedScene = preload("res://src/editor/segment_props_v_box_container.tscn")
 var labels_container_packedscene : PackedScene = preload("res://src/editor/labels_container.tscn")
 var labels_container_instance : Node = null
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 	print("Roulette Editor Ready")
 	Globals.roulete_editor_scene = self
-	update_all_editor()
+	create_new_roulette()
 
 func clean_vbox_children(vbox: VBoxContainer) -> void:
 	for child in vbox.get_children():
 		child.queue_free()
+
+func create_new_roulette() -> void:
+	print("New roulette created")
+	roulette_info = roulette_info_default.clone()
+	update_all_editor()
 
 func load_roulette(_roulette_name : String) -> void:
 	roulette_info = Globals.save_load_manager.load_roulette(_roulette_name)
@@ -99,7 +107,7 @@ func _on_mida_font_spin_box_value_changed(value: float) -> void:
 func _on_opcions_menu_index_pressed(index: int) -> void:
 	match index:
 		0:
-			pass
+			new_confirmation_dialog.popup_centered()
 		1:
 			load_roulette_popup.exclusive = true
 			load_roulette_popup.transient = true
@@ -128,3 +136,6 @@ func _on_load_roulette_popup_file_selected(path: String) -> void:
 
 func _on_save_confirmation_dialog_confirmed() -> void:
 	save_roulette()
+
+func _on_new_confirmation_dialog_confirmed() -> void:
+	create_new_roulette()

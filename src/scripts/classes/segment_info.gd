@@ -1,4 +1,3 @@
-extends Node
 class_name SegmentInfo
 
 var s_name: String = ""

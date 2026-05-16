@@ -5,6 +5,7 @@
 
 [node name="GameManager" type="Node" unique_id=1773128760]
 script = ExtResource("1_x17l7")
+current_init_type = 3
 
 [node name="SaveLoadManager" type="Node" parent="." unique_id=1601281165]
 script = ExtResource("2_2138g")
