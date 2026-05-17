@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cx4ospfuoteyv"]
+
+[ext_resource type="Script" uid="uid://d01dlpw4pupv7" path="res://src/scripts/match_player_v_box_container.gd" id="1_aynyf"]
+
+[node name="MatchPlayerVBoxContainer" type="VBoxContainer" unique_id=1736111174]
+script = ExtResource("1_aynyf")
+
+[node name="PlayerNameLabel" type="Label" parent="." unique_id=1348804545]
+layout_mode = 2
+text = "Jugador Name Label"
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=51438807]
+layout_mode = 2
+
+[node name="ResultColorRect" type="ColorRect" parent="MarginContainer" unique_id=1905733696]
+layout_mode = 2
+color = Color(0.4506483, 0.4506483, 0.45064825, 1)
+
+[node name="ResultLabel" type="Label" parent="MarginContainer" unique_id=1338553107]
+layout_mode = 2
+text = "Resultat"
+horizontal_alignment = 1
+vertical_alignment = 1

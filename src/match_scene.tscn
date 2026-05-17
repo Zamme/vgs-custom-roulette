@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://bgglx85dgnotw" path="res://src/scripts/match_scene.gd" id="1_bmh8m"]
 [ext_resource type="Texture2D" uid="uid://coiv3r6b48is8" path="res://assets/textures/taula_fusta_albedo.png" id="2_00ot4"]
 [ext_resource type="FontFile" uid="uid://bdrkor4sy7njn" path="res://assets/fonts/DejaVuSans.ttf" id="2_7meom"]
+[ext_resource type="Script" uid="uid://c6dstkqh6byno" path="res://src/scripts/match_control.gd" id="2_ah1b0"]
+[ext_resource type="PackedScene" uid="uid://cx4ospfuoteyv" path="res://src/ui/match_player_v_box_container.tscn" id="3_s4p1r"]
 [ext_resource type="Texture2D" uid="uid://cek0niwhg1pw" path="res://assets/textures/taula_fusta_orm.png" id="3_y5sdm"]
 [ext_resource type="Script" uid="uid://cbraaod2783xm" path="res://src/scripts/match_roulette.gd" id="4_3ntpd"]
 [ext_resource type="PackedScene" uid="uid://bdwbwjk4tymch" path="res://src/roulette/roulette_01.tscn" id="4_y5sdm"]
@@ -33,6 +35,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_ah1b0")
 
 [node name="PanelContainer" type="PanelContainer" parent="MatchControl" unique_id=1866871620]
 layout_mode = 1
@@ -113,25 +116,8 @@ text = "Players"
 [node name="PlayersVBoxContainer" type="VBoxContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/PlayersMainVBoxContainer/MarginContainer/PanelContainer/VBoxContainer" unique_id=470865026]
 layout_mode = 2
 
-[node name="PlayerVBoxContainer" type="VBoxContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/PlayersMainVBoxContainer/MarginContainer/PanelContainer/VBoxContainer/PlayersVBoxContainer" unique_id=113764087]
+[node name="MatchPlayerVBoxContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/PlayersMainVBoxContainer/MarginContainer/PanelContainer/VBoxContainer/PlayersVBoxContainer" unique_id=1736111174 instance=ExtResource("3_s4p1r")]
 layout_mode = 2
-
-[node name="PlayerNameLabel" type="Label" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/PlayersMainVBoxContainer/MarginContainer/PanelContainer/VBoxContainer/PlayersVBoxContainer/PlayerVBoxContainer" unique_id=58622588]
-layout_mode = 2
-text = "Jugador Name Label"
-
-[node name="MarginContainer" type="MarginContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/PlayersMainVBoxContainer/MarginContainer/PanelContainer/VBoxContainer/PlayersVBoxContainer/PlayerVBoxContainer" unique_id=517695469]
-layout_mode = 2
-
-[node name="ColorRect" type="ColorRect" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/PlayersMainVBoxContainer/MarginContainer/PanelContainer/VBoxContainer/PlayersVBoxContainer/PlayerVBoxContainer/MarginContainer" unique_id=1814968833]
-layout_mode = 2
-color = Color(0.4506483, 0.4506483, 0.45064825, 1)
-
-[node name="Label" type="Label" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/PlayersMainVBoxContainer/MarginContainer/PanelContainer/VBoxContainer/PlayersVBoxContainer/PlayerVBoxContainer/MarginContainer" unique_id=961921936]
-layout_mode = 2
-text = "Resultat"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="LoadMatchFileDialog" type="FileDialog" parent="MatchControl" unique_id=725353982]
 title = "Open a File"
