@@ -11,4 +11,4 @@ func _on_editor_jocs_button_button_up() -> void:
 	Globals.game_manager.load_game_editor()
 
 func _on_jugar_button_button_up() -> void:
-	pass # Replace with function body.
+	Globals.game_manager.load_match_scene()

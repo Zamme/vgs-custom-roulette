@@ -1,8 +1,7 @@
-extends Node3D
+class_name RouletteObject extends Node3D
 
 @onready var roulette_inner = %Roulete_001
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
@@ -22,7 +21,3 @@ func load_roulette(roulette_info):
 			new_gradient.add_point(float(i) / segment_count, segment_color)
 		palette.set("gradient", new_gradient)
 		
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

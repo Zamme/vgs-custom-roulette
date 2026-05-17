@@ -1,4 +1,4 @@
-extends Node3D
+class_name LabelsContainer extends Node3D
 
 @export var radio_texto: float = 0.3 # Distancia desde el centro al texto
 

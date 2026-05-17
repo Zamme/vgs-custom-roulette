@@ -1,0 +1,175 @@
+[gd_scene format=3 uid="uid://c6ofog17n55ut"]
+
+[ext_resource type="Script" uid="uid://bgglx85dgnotw" path="res://src/scripts/match_scene.gd" id="1_bmh8m"]
+[ext_resource type="Texture2D" uid="uid://coiv3r6b48is8" path="res://assets/textures/taula_fusta_albedo.png" id="2_00ot4"]
+[ext_resource type="FontFile" uid="uid://bdrkor4sy7njn" path="res://assets/fonts/DejaVuSans.ttf" id="2_7meom"]
+[ext_resource type="Texture2D" uid="uid://cek0niwhg1pw" path="res://assets/textures/taula_fusta_orm.png" id="3_y5sdm"]
+[ext_resource type="Script" uid="uid://cbraaod2783xm" path="res://src/scripts/match_roulette.gd" id="4_3ntpd"]
+[ext_resource type="PackedScene" uid="uid://bdwbwjk4tymch" path="res://src/roulette/roulette_01.tscn" id="4_y5sdm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3ntpd"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_bmh8m"]
+size = Vector2(5, 5)
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_3ntpd"]
+shading_mode = 0
+disable_ambient_light = true
+disable_specular_occlusion = true
+albedo_texture = ExtResource("2_00ot4")
+orm_texture = ExtResource("3_y5sdm")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3ntpd"]
+height = 0.51
+radius = 1.1
+
+[node name="MatchScene" type="Node3D" unique_id=536331775]
+script = ExtResource("1_bmh8m")
+
+[node name="MatchControl" type="Control" parent="." unique_id=760085604]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MatchControl" unique_id=1866871620]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_3ntpd")
+
+[node name="MarginContainer" type="MarginContainer" parent="MatchControl/PanelContainer" unique_id=2127439748]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MatchControl/PanelContainer/MarginContainer" unique_id=1030371794]
+layout_mode = 2
+
+[node name="MatchMenu" type="MenuBar" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer" unique_id=732309442]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_constants/outline_size = 2
+theme_override_constants/h_separation = 50
+theme_override_fonts/font = ExtResource("2_7meom")
+
+[node name="MatchPopupMenu" type="PopupMenu" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/MatchMenu" unique_id=1138947218]
+title = "Match Menu"
+item_count = 5
+item_0/text = "Nou"
+item_0/id = 0
+item_1/text = "Carregar"
+item_1/id = 1
+item_2/text = "Guardar"
+item_2/id = 2
+item_3/text = "Sortir"
+item_3/id = 3
+item_4/text = "Play"
+item_4/id = 4
+
+[node name="MatchPropertiesPopupMenu" type="PopupMenu" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/MatchMenu" unique_id=145529627]
+title = "Match Properties"
+item_count = 2
+item_0/text = "Load Roulette"
+item_0/id = 0
+item_1/text = "Load Game"
+item_1/id = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer" unique_id=1706002709]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+
+[node name="PlayersMainVBoxContainer" type="VBoxContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer" unique_id=1786724268]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/PlayersMainVBoxContainer" unique_id=1526034746]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/PlayersMainVBoxContainer/MarginContainer" unique_id=508049875]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/PlayersMainVBoxContainer/MarginContainer/PanelContainer" unique_id=640674022]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/PlayersMainVBoxContainer/MarginContainer/PanelContainer/VBoxContainer" unique_id=1830166210]
+layout_mode = 2
+text = "Players"
+
+[node name="PlayersVBoxContainer" type="VBoxContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/PlayersMainVBoxContainer/MarginContainer/PanelContainer/VBoxContainer" unique_id=470865026]
+layout_mode = 2
+
+[node name="PlayerVBoxContainer" type="VBoxContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/PlayersMainVBoxContainer/MarginContainer/PanelContainer/VBoxContainer/PlayersVBoxContainer" unique_id=113764087]
+layout_mode = 2
+
+[node name="PlayerNameLabel" type="Label" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/PlayersMainVBoxContainer/MarginContainer/PanelContainer/VBoxContainer/PlayersVBoxContainer/PlayerVBoxContainer" unique_id=58622588]
+layout_mode = 2
+text = "Jugador Name Label"
+
+[node name="MarginContainer" type="MarginContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/PlayersMainVBoxContainer/MarginContainer/PanelContainer/VBoxContainer/PlayersVBoxContainer/PlayerVBoxContainer" unique_id=517695469]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/PlayersMainVBoxContainer/MarginContainer/PanelContainer/VBoxContainer/PlayersVBoxContainer/PlayerVBoxContainer/MarginContainer" unique_id=1814968833]
+layout_mode = 2
+color = Color(0.4506483, 0.4506483, 0.45064825, 1)
+
+[node name="Label" type="Label" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/PlayersMainVBoxContainer/MarginContainer/PanelContainer/VBoxContainer/PlayersVBoxContainer/PlayerVBoxContainer/MarginContainer" unique_id=961921936]
+layout_mode = 2
+text = "Resultat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LoadMatchFileDialog" type="FileDialog" parent="MatchControl" unique_id=725353982]
+title = "Open a File"
+initial_position = 1
+dialog_hide_on_ok = true
+file_mode = 0
+access = 1
+hidden_files_toggle_enabled = false
+folder_creation_enabled = false
+overwrite_warning_enabled = false
+deleting_enabled = false
+
+[node name="Taula" type="MeshInstance3D" parent="." unique_id=952713069]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_bmh8m")
+surface_material_override/0 = SubResource("ORMMaterial3D_3ntpd")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1405166598]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.76, 0)
+
+[node name="OmniLight3D" type="DirectionalLight3D" parent="." unique_id=588050780]
+transform = Transform3D(1, 0, 0, 0, 0.2300667, 0.97317487, 0, -0.97317487, 0.2300667, 0, 4.185, 0)
+light_energy = 10.0
+
+[node name="MatchRoulette" type="RigidBody3D" parent="." unique_id=1576497822]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2640381, 0)
+collision_layer = 2
+collision_mask = 0
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+script = ExtResource("4_3ntpd")
+
+[node name="roulette_01" parent="MatchRoulette" unique_id=88176997 instance=ExtResource("4_y5sdm")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MatchRoulette" unique_id=1650377777]
+shape = SubResource("CylinderShape3D_3ntpd")
+
+[connection signal="index_pressed" from="MatchControl/PanelContainer/MarginContainer/VBoxContainer/MatchMenu/MatchPopupMenu" to="." method="_on_match_menu_index_pressed"]
