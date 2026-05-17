@@ -5,6 +5,9 @@ const ROULETTES_DIRNAME = "roulettes"
 const ROULETTES_FILES_EXT = ".rul"
 const GAMES_DIRNAME = "games"
 const GAMES_FILES_EXT = ".gam"
+const MATCHES_DIRNAME = "matches"
+const MATCHES_FILES_EXT = ".mat"
+
 
 func _ready() -> void:
 	Globals.save_load_manager = self
@@ -19,6 +22,16 @@ func check_roulettes_dir():
 		else:
 			print("Rouletes dir created succesfully.")
 
+func check_matches_dir():
+	var dir_path : String = USER_PREFIX + MATCHES_DIRNAME
+	if not DirAccess.dir_exists_absolute(dir_path):
+		print("Matches dir not found. Creating...")
+		var _error : Error = DirAccess.make_dir_absolute(dir_path)
+		if _error:
+			print("Error: ", _error)
+		else:
+			print("Matches dir created succesfully.")
+
 func check_games_dir():
 	var dir_path : String = USER_PREFIX + GAMES_DIRNAME
 	if not DirAccess.dir_exists_absolute(dir_path):
@@ -32,6 +45,10 @@ func check_games_dir():
 func exists_roulette_file(_roulette_name : String) -> bool:
 	var _roulette_filepath : String = USER_PREFIX + ROULETTES_DIRNAME.path_join(_roulette_name) + ROULETTES_FILES_EXT
 	return FileAccess.file_exists(_roulette_filepath)
+
+func exists_match_file(_match_name : String) -> bool:
+	var _match_filepath : String = USER_PREFIX + MATCHES_DIRNAME.path_join(_match_name) + MATCHES_FILES_EXT
+	return FileAccess.file_exists(_match_filepath)
 
 func exists_game_file(_game_name : String) -> bool:
 	var _game_filepath : String = USER_PREFIX + GAMES_DIRNAME.path_join(_game_name) + GAMES_FILES_EXT
@@ -52,6 +69,22 @@ func load_game(_game_name : String):
 											_game_file.get_value("General", "Description", "Un Joc"),
 											_players)
 	return _game_info
+
+func load_match(_match_name : String):
+	var _match_file : ConfigFile = ConfigFile.new()
+	var _match_filepath : String = USER_PREFIX + MATCHES_DIRNAME.path_join(_match_name) + MATCHES_FILES_EXT
+	check_matches_dir()
+	_match_file.load(_match_filepath)
+	
+	var _match_info : MatchInfo = MatchInfo.new()
+	var _roulette_info : RouletteInfo = RouletteInfo.new()
+	_roulette_info = load_roulette(_match_file.get_value("General", "Roulette", null))
+	var _game_info : GameInfo = GameInfo.new()
+	_game_info = load_game(_match_file.get_value("General", "Game", null))
+	_match_info.create_match(_match_file.get_value("General", "Name", "NULL"),
+								_roulette_info,
+											_game_info)
+	return _match_info
 
 func load_roulette(_roulette_name : String):
 	var _roulette_file : ConfigFile = ConfigFile.new()
@@ -83,6 +116,20 @@ func save_game(_game_info : GameInfo) -> bool:
 	var _game_filepath : String = USER_PREFIX + GAMES_DIRNAME.path_join(_game_info.g_name) + GAMES_FILES_EXT
 	check_games_dir()
 	var _error : Error = _game_file.save(_game_filepath)
+	_saved = _error == OK
+	return _saved
+
+func save_match(_match_info : MatchInfo) -> bool:
+	var _saved : bool
+	var _match_file : ConfigFile = ConfigFile.new()
+	
+	_match_file.set_value("General", "Name", _match_info.match_name)
+	_match_file.set_value("General", "Roulette", _match_info.roulette_info.r_name)
+	_match_file.set_value("General", "Game", _match_info.game_info.g_name)
+
+	var _match_filepath : String = USER_PREFIX + MATCHES_DIRNAME.path_join(_match_info.match_name) + MATCHES_FILES_EXT
+	check_matches_dir()
+	var _error : Error = _match_file.save(_match_filepath)
 	_saved = _error == OK
 	return _saved
 

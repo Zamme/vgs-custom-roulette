@@ -92,10 +92,23 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 3
 
-[node name="PlayersMainVBoxContainer" type="VBoxContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer" unique_id=1786724268]
+[node name="VBoxContainer" type="VBoxContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer" unique_id=288010673]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/PlayersMainVBoxContainer" unique_id=1526034746]
+[node name="VBoxContainer" type="VBoxContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer" unique_id=199480221]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer" unique_id=1389581213]
+layout_mode = 2
+text = "Match Name"
+
+[node name="MatchNameLineEdit" type="LineEdit" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer" unique_id=98406326]
+layout_mode = 2
+
+[node name="PlayersMainVBoxContainer" type="VBoxContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer" unique_id=1786724268]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/PlayersMainVBoxContainer" unique_id=1526034746]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 5
@@ -103,20 +116,20 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="PanelContainer" type="PanelContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/PlayersMainVBoxContainer/MarginContainer" unique_id=508049875]
+[node name="PanelContainer" type="PanelContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/PlayersMainVBoxContainer/MarginContainer" unique_id=508049875]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/PlayersMainVBoxContainer/MarginContainer/PanelContainer" unique_id=640674022]
+[node name="VBoxContainer" type="VBoxContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/PlayersMainVBoxContainer/MarginContainer/PanelContainer" unique_id=640674022]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/PlayersMainVBoxContainer/MarginContainer/PanelContainer/VBoxContainer" unique_id=1830166210]
+[node name="Label" type="Label" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/PlayersMainVBoxContainer/MarginContainer/PanelContainer/VBoxContainer" unique_id=1830166210]
 layout_mode = 2
 text = "Players"
 
-[node name="PlayersVBoxContainer" type="VBoxContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/PlayersMainVBoxContainer/MarginContainer/PanelContainer/VBoxContainer" unique_id=470865026]
+[node name="PlayersVBoxContainer" type="VBoxContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/PlayersMainVBoxContainer/MarginContainer/PanelContainer/VBoxContainer" unique_id=470865026]
 layout_mode = 2
 
-[node name="MatchPlayerVBoxContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/PlayersMainVBoxContainer/MarginContainer/PanelContainer/VBoxContainer/PlayersVBoxContainer" unique_id=1736111174 instance=ExtResource("3_s4p1r")]
+[node name="MatchPlayerVBoxContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/PlayersMainVBoxContainer/MarginContainer/PanelContainer/VBoxContainer/PlayersVBoxContainer" unique_id=1736111174 instance=ExtResource("3_s4p1r")]
 layout_mode = 2
 
 [node name="LoadMatchFileDialog" type="FileDialog" parent="MatchControl" unique_id=725353982]
@@ -128,6 +141,35 @@ access = 1
 hidden_files_toggle_enabled = false
 folder_creation_enabled = false
 overwrite_warning_enabled = false
+deleting_enabled = false
+
+[node name="LoadGameFileDialog" type="FileDialog" parent="MatchControl" unique_id=1436463160]
+title = "Open a File"
+initial_position = 1
+dialog_hide_on_ok = true
+file_mode = 0
+access = 1
+hidden_files_toggle_enabled = false
+folder_creation_enabled = false
+overwrite_warning_enabled = false
+deleting_enabled = false
+
+[node name="LoadRouletteFileDialog" type="FileDialog" parent="MatchControl" unique_id=800549289]
+title = "Open a File"
+initial_position = 1
+dialog_hide_on_ok = true
+file_mode = 0
+access = 1
+hidden_files_toggle_enabled = false
+folder_creation_enabled = false
+overwrite_warning_enabled = false
+deleting_enabled = false
+
+[node name="SaveMatchFileDialog" type="FileDialog" parent="MatchControl" unique_id=1479406040]
+initial_position = 1
+dialog_hide_on_ok = true
+access = 1
+hidden_files_toggle_enabled = false
 deleting_enabled = false
 
 [node name="Taula" type="MeshInstance3D" parent="." unique_id=952713069]
@@ -159,3 +201,9 @@ script = ExtResource("4_3ntpd")
 shape = SubResource("CylinderShape3D_3ntpd")
 
 [connection signal="index_pressed" from="MatchControl/PanelContainer/MarginContainer/VBoxContainer/MatchMenu/MatchPopupMenu" to="." method="_on_match_menu_index_pressed"]
+[connection signal="index_pressed" from="MatchControl/PanelContainer/MarginContainer/VBoxContainer/MatchMenu/MatchPropertiesPopupMenu" to="." method="_on_match_properties_popup_menu_index_pressed"]
+[connection signal="editing_toggled" from="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer/MatchNameLineEdit" to="MatchControl" method="_on_match_name_line_edit_editing_toggled"]
+[connection signal="file_selected" from="MatchControl/LoadMatchFileDialog" to="." method="_on_load_match_file_dialog_file_selected"]
+[connection signal="file_selected" from="MatchControl/LoadGameFileDialog" to="." method="_on_load_game_file_dialog_file_selected"]
+[connection signal="file_selected" from="MatchControl/LoadRouletteFileDialog" to="." method="_on_load_roulette_file_dialog_file_selected"]
+[connection signal="file_selected" from="MatchControl/SaveMatchFileDialog" to="." method="_on_save_match_file_dialog_file_selected"]
