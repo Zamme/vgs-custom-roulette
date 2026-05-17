@@ -1,6 +1,9 @@
 class_name MatchScene extends Node3D
 
 
+const default_rotation_velocity : Vector3 = Vector3(0, -10.0, 0.0) 
+const default_damp : float = 0.5
+
 @onready var roulette_rb : MatchRoulette = $MatchRoulette
 @onready var load_roulette_popup : FileDialog = $MatchControl/LoadRouletteFileDialog
 @onready var load_game_popup : FileDialog = $MatchControl/LoadGameFileDialog
@@ -42,7 +45,7 @@ func update_labels_container() -> void:
 	if labels_container_instance:
 		labels_container_instance.queue_free()
 	labels_container_instance = labels_container_packedscene.instantiate()
-	add_child(labels_container_instance)
+	roulette_rb.add_child(labels_container_instance)
 	labels_container_instance.generar_textos_radiales(roulette_info.r_segments, roulette_info.r_radio_dev, roulette_info.r_mida_font)
 	labels_container_instance.global_position.y = 0.2
 
@@ -100,3 +103,9 @@ func _on_load_match_file_dialog_file_selected(path: String) -> void:
 
 func _on_save_match_file_dialog_file_selected(path: String) -> void:
 	pass # Replace with function body.
+
+func _on_go_button_button_down() -> void:
+	roulette_rb.angular_velocity = default_rotation_velocity
+
+func _on_go_button_button_up() -> void:
+	roulette_rb.angular_damp = default_damp

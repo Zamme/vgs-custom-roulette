@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://cek0niwhg1pw" path="res://assets/textures/taula_fusta_orm.png" id="3_y5sdm"]
 [ext_resource type="Script" uid="uid://cbraaod2783xm" path="res://src/scripts/match_roulette.gd" id="4_3ntpd"]
 [ext_resource type="PackedScene" uid="uid://bdwbwjk4tymch" path="res://src/roulette/roulette_01.tscn" id="4_y5sdm"]
+[ext_resource type="Texture2D" uid="uid://dufla825tpamv" path="res://assets/textures/go_button.png" id="5_5644n"]
+[ext_resource type="Script" uid="uid://cyv8okel0e4x0" path="res://src/scripts/go_button.gd" id="6_jl3iu"]
+[ext_resource type="PackedScene" uid="uid://b1tsrrd2rge6u" path="res://src/other/arrow_01.tscn" id="10_an4x1"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3ntpd"]
 
@@ -172,6 +175,33 @@ access = 1
 hidden_files_toggle_enabled = false
 deleting_enabled = false
 
+[node name="GOButton" type="Button" parent="MatchControl" unique_id=642729970]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.5
+offset_top = -77.5
+offset_right = 77.5
+offset_bottom = 77.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_7meom")
+theme_override_font_sizes/font_size = 69
+text = "GO"
+icon = ExtResource("5_5644n")
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("6_jl3iu")
+
 [node name="Taula" type="MeshInstance3D" parent="." unique_id=952713069]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
 mesh = SubResource("QuadMesh_bmh8m")
@@ -200,6 +230,9 @@ script = ExtResource("4_3ntpd")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MatchRoulette" unique_id=1650377777]
 shape = SubResource("CylinderShape3D_3ntpd")
 
+[node name="arrow_01" parent="." unique_id=2044049041 instance=ExtResource("10_an4x1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28, 0)
+
 [connection signal="index_pressed" from="MatchControl/PanelContainer/MarginContainer/VBoxContainer/MatchMenu/MatchPopupMenu" to="." method="_on_match_menu_index_pressed"]
 [connection signal="index_pressed" from="MatchControl/PanelContainer/MarginContainer/VBoxContainer/MatchMenu/MatchPropertiesPopupMenu" to="." method="_on_match_properties_popup_menu_index_pressed"]
 [connection signal="editing_toggled" from="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer/MatchNameLineEdit" to="MatchControl" method="_on_match_name_line_edit_editing_toggled"]
@@ -207,3 +240,5 @@ shape = SubResource("CylinderShape3D_3ntpd")
 [connection signal="file_selected" from="MatchControl/LoadGameFileDialog" to="." method="_on_load_game_file_dialog_file_selected"]
 [connection signal="file_selected" from="MatchControl/LoadRouletteFileDialog" to="." method="_on_load_roulette_file_dialog_file_selected"]
 [connection signal="file_selected" from="MatchControl/SaveMatchFileDialog" to="." method="_on_save_match_file_dialog_file_selected"]
+[connection signal="button_down" from="MatchControl/GOButton" to="." method="_on_go_button_button_down"]
+[connection signal="button_up" from="MatchControl/GOButton" to="." method="_on_go_button_button_up"]

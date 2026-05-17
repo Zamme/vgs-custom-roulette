@@ -1,4 +1,6 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://dq7rlmp4ntg2d"]
 
+[ext_resource type="Texture2D" uid="uid://dufla825tpamv" path="res://assets/textures/go_button.png" id="1_ijbgv"]
+
 [resource]
-albedo_color = Color(0.7177678, 0.00043317676, 0.72664887, 1)
+albedo_texture = ExtResource("1_ijbgv")

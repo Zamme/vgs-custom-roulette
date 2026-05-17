@@ -9,12 +9,12 @@
 [node name="roulette_01" unique_id=88176997 instance=ExtResource("1_ehawn")]
 script = ExtResource("2_mx286")
 
-[node name="Roulete" parent="." index="0" unique_id=1710337755]
+[node name="Roulete" parent="." index="0" unique_id=1648217526]
 surface_material_override/0 = ExtResource("3_na1o5")
 
-[node name="Roulete_Center" parent="Roulete" index="0" unique_id=1314051771]
+[node name="Roulete_Center" parent="Roulete" index="0" unique_id=315283811]
 surface_material_override/0 = ExtResource("4_xnj1q")
 
-[node name="Roulete_001" parent="Roulete/Roulete_Center" index="0" unique_id=1410191963]
+[node name="Roulete_001" parent="Roulete/Roulete_Center" index="0" unique_id=1939112542]
 unique_name_in_owner = true
 surface_material_override/0 = ExtResource("3_m2xos")
