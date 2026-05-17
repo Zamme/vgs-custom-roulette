@@ -11,7 +11,6 @@ func _ready() -> void:
 
 func check_roulettes_dir():
 	var dir_path : String = USER_PREFIX + ROULETTES_DIRNAME
-	print(dir_path)
 	if not DirAccess.dir_exists_absolute(dir_path):
 		print("Rouletes dir not found. Creating...")
 		var _error : Error = DirAccess.make_dir_absolute(dir_path)
@@ -22,7 +21,6 @@ func check_roulettes_dir():
 
 func check_games_dir():
 	var dir_path : String = USER_PREFIX + GAMES_DIRNAME
-	print(dir_path)
 	if not DirAccess.dir_exists_absolute(dir_path):
 		print("Games dir not found. Creating...")
 		var _error : Error = DirAccess.make_dir_absolute(dir_path)

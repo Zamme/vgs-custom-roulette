@@ -127,3 +127,6 @@ deleting_enabled = false
 
 [connection signal="index_pressed" from="PanelContainer/MarginContainer/VBoxContainer/MenuBar/OptionsMenu" to="." method="_on_options_menu_index_pressed"]
 [connection signal="button_up" from="PanelContainer/MarginContainer/VBoxContainer/vBoxContainer3/PanelContainer/VBoxContainer/AddPlayerButton" to="." method="_on_add_player_button_button_up"]
+[connection signal="confirmed" from="NewConfirmationDialog" to="." method="_on_new_confirmation_dialog_confirmed"]
+[connection signal="confirmed" from="SaveConfirmationDialog" to="." method="_on_save_confirmation_dialog_confirmed"]
+[connection signal="file_selected" from="LoadFileDialog" to="." method="_on_load_file_dialog_file_selected"]

@@ -36,4 +36,15 @@ func _on_down_button_button_up() -> void:
 	move_player_down()
 
 func _on_nom_jugador_line_edit_text_changed(new_text: String) -> void:
-	modify_player_name(new_text)
+	pass
+	#modify_player_name(new_text)
+
+func _on_nom_jugador_line_edit_editing_toggled(toggled_on: bool) -> void:
+	if not toggled_on:
+		var _player_name_default : String = nom_jugador_lineedit.text
+		var _player_name : String = _player_name_default
+		var _player_index : int = 0
+		while Globals.game_editor_scene.check_player_exists(_player_name):
+			_player_index += 1
+			_player_name = _player_name_default + " " + str(_player_index)
+		modify_player_name(_player_name)

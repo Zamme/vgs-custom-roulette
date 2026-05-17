@@ -19,9 +19,22 @@ func _ready() -> void:
 	new_game()
 
 func add_player() -> void:
-	var new_player : PlayerInfo = PlayerInfo.new("Nom Jugador")
+	var _player_name_default = "Nom Jugador"
+	var _player_name : String = _player_name_default
+	var _player_index : int = 0
+	while check_player_exists(_player_name):
+		_player_index += 1
+		_player_name = _player_name_default + " " + str(_player_index)
+	var new_player : PlayerInfo = PlayerInfo.new(_player_name)
 	game_info.g_players.append(new_player)
 	update_editor()
+
+func check_player_exists(_player_name : String) -> bool:
+	var _exists : bool = false
+	for _player in game_info.g_players:
+		if _player.p_name == _player_name:
+			_exists = true
+	return _exists
 
 func clear_players_vbox() -> void:
 	for _child in player_vbox.get_children():
@@ -38,15 +51,19 @@ func fill_players_vbox() -> void:
 		player_vbox.add_child(new_player)
 		if i_player == 0:
 			new_player.up_button.disabled = true
+			if game_info.g_players.size() == 1:
+				new_player.delete_button.disabled = true
 		if i_player == game_info.g_players.size()-1:
 			new_player.down_button.disabled = true
 		new_player.create_player(i_player, game_info.g_players[i_player])
 
-func load_game():
-	pass
+func load_game(_game_name : String) -> void:
+	game_info = Globals.save_load_manager.load_game(_game_name)
+	update_editor()
 
 func modify_player_name(_player_index : int, _name : String) -> void:
 	game_info.g_players[_player_index].p_name = _name
+	update_editor()
 
 func move_player_down(_index : int):
 	var temp_player = game_info.g_players[_index+1]
@@ -65,7 +82,8 @@ func new_game() -> void:
 	update_editor()
 
 func save_game():
-	pass
+	var _saved : bool = Globals.save_load_manager.save_game(game_info)
+	print("Saved: " + str(_saved))
 
 func update_editor() -> void:
 	nom_joc_lineedit.text = game_info.g_name
@@ -92,3 +110,13 @@ func _on_options_menu_index_pressed(index: int) -> void:
 				save_game()
 		3:
 			Globals.game_manager.load_main_menu()
+
+func _on_load_file_dialog_file_selected(path: String) -> void:
+	var _game_name : String = path.get_basename().get_file()
+	load_game(_game_name)
+
+func _on_new_confirmation_dialog_confirmed() -> void:
+	new_game()
+
+func _on_save_confirmation_dialog_confirmed() -> void:
+	save_game()
