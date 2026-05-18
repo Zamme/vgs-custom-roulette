@@ -11,6 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://dufla825tpamv" path="res://assets/textures/go_button.png" id="5_5644n"]
 [ext_resource type="Script" uid="uid://cyv8okel0e4x0" path="res://src/scripts/go_button.gd" id="6_jl3iu"]
 [ext_resource type="PackedScene" uid="uid://b1tsrrd2rge6u" path="res://src/other/arrow_01.tscn" id="10_an4x1"]
+[ext_resource type="AudioStream" uid="uid://cna8sb3lam1sa" path="res://assets/audio/kitchen_ambient_01.mp3" id="12_h1ovk"]
+[ext_resource type="AudioStream" uid="uid://bh32aj4upuv1g" path="res://assets/audio/car_loop.wav" id="13_drlgp"]
+[ext_resource type="AudioStream" uid="uid://d4g8qp1s2e3yp" path="res://assets/audio/heyy.wav" id="14_84jov"]
+[ext_resource type="AudioStream" uid="uid://dbnsuxn3gxynx" path="res://assets/audio/music_01.mp3" id="15_ab0bp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3ntpd"]
 
@@ -232,6 +236,18 @@ shape = SubResource("CylinderShape3D_3ntpd")
 
 [node name="arrow_01" parent="." unique_id=2044049041 instance=ExtResource("10_an4x1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28, 0)
+
+[node name="AmbientAudio" type="AudioStreamPlayer" parent="." unique_id=940406743]
+stream = ExtResource("12_h1ovk")
+
+[node name="RollingAudio" type="AudioStreamPlayer" parent="." unique_id=1837605348]
+stream = ExtResource("13_drlgp")
+
+[node name="HeyAudio" type="AudioStreamPlayer" parent="." unique_id=784436086]
+stream = ExtResource("14_84jov")
+
+[node name="MusicAudio" type="AudioStreamPlayer" parent="." unique_id=1418999866]
+stream = ExtResource("15_ab0bp")
 
 [connection signal="index_pressed" from="MatchControl/PanelContainer/MarginContainer/VBoxContainer/MatchMenu/MatchPopupMenu" to="." method="_on_match_menu_index_pressed"]
 [connection signal="index_pressed" from="MatchControl/PanelContainer/MarginContainer/VBoxContainer/MatchMenu/MatchPropertiesPopupMenu" to="." method="_on_match_properties_popup_menu_index_pressed"]

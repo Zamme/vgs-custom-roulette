@@ -9,3 +9,6 @@ current_init_type = 4
 
 [node name="SaveLoadManager" type="Node" parent="." unique_id=1601281165]
 script = ExtResource("2_2138g")
+
+[node name="AudioListener3D" type="AudioListener3D" parent="." unique_id=1644465447]
+current = true
