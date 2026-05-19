@@ -2,6 +2,8 @@ class_name MatchInfo
 
 
 var match_name : String
+var match_state : int # 0 : None, 1 : Begining, 2 : Playing, 3 : Finished
+var match_order : int # 0 : Forward, 1 : Backward, 2 : Random
 
 var roulette_info_default: RouletteInfo = RouletteInfo.new("New Roulette", "This is a new roulette",
 	[SegmentInfo.new("Segment 1", Color.RED), 
@@ -16,8 +18,10 @@ var game_info : GameInfo
 func _init() -> void:
 	pass
 
-func create_match(_match_name : String, _roulette_info : RouletteInfo, _game_info : GameInfo) -> void:
+func create_match(_match_name : String, _match_order : int, _match_state : int, _roulette_info : RouletteInfo, _game_info : GameInfo) -> void:
 	match_name = _match_name
+	match_order = _match_order
+	match_state = _match_state
 	roulette_info = _roulette_info
 	game_info = _game_info
 

@@ -13,10 +13,12 @@ const default_damp : float = 0.5
 @onready var hey_audio : AudioStreamPlayer = $HeyAudio
 @onready var music_audio : AudioStreamPlayer = $MusicAudio
 
+@onready var rot_spinbox: SpinBox = $MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/RotationSpinBox
+
 
 # Ajuste fino si tu flecha no empieza en el "Grado 0" del shader
 # Si la flecha está arriba, abajo o a un lado, ajustamos este offset.
-@export_range(0, 360) var offset_flecha_grados: float = 270.0
+@export_range(0, 360) var arrow_offset: float = 72.0
 
 
 var match_info : MatchInfo = MatchInfo.new()
@@ -29,13 +31,29 @@ var is_roulette_rolling : bool
 func _ready() -> void:
 	Globals.match_scene = self
 	new_match()
-	play_music_audio(true)
-	play_ambient_audio(true)
-	check_roulette_result()
+	#play_music_audio(true)
+	#play_ambient_audio(true)
+	#check_roulette_result()
+	#rot_spinbox.value = -107
 
 func check_roulette_result() -> void:
 	print("Roulette Rotation: ", rad_to_deg(roulette_rb.global_rotation.y))
-	print("Segment: ", obtener_segmento_apuntado() +1)
+	print("Segment: ", get_segment_result())
+
+func get_segment_result() -> int:
+	var n_segments : int = match_info.roulette_info.r_segments.size()
+	var rot_and_deg = fposmod(rad_to_deg(roulette_rb.global_rotation.y), 360.0)
+	
+	var fixed_degrees = rot_and_deg - 180.0
+	fixed_degrees -= arrow_offset
+	fixed_degrees = fposmod(fixed_degrees, 360.0)
+	var degrees_per_segment = 360.0 / n_segments
+	var segment_id = floor(fixed_degrees / degrees_per_segment)
+	
+	#segment_id = (n_segments - 1) - segment_id
+	segment_id = int(fposmod(segment_id, n_segments))
+	
+	return segment_id
 
 func go_roulette() -> void:
 	check_roulette_result()
@@ -81,6 +99,9 @@ func save_match():
 	var _saved : bool = Globals.save_load_manager.save_match(match_info)
 	print("Saved: " + str(_saved))
 
+func start_match() -> void:
+	pass
+
 func stop_roulette() -> void:
 	roulette_rb.angular_damp = default_damp
 
@@ -116,9 +137,7 @@ func _on_match_menu_index_pressed(index: int) -> void:
 		2:
 			save_match()
 		3:
-			pass
-		4:
-			pass
+			Globals.game_manager.load_main_menu()
 
 func _on_match_properties_popup_menu_index_pressed(index: int) -> void:
 	match index:
@@ -145,43 +164,24 @@ func _on_load_match_file_dialog_file_selected(path: String) -> void:
 	var _match_name : String = path.get_basename().get_file()
 	load_match(_match_name)
 
-func _on_save_match_file_dialog_file_selected(path: String) -> void:
+func _on_save_match_file_dialog_file_selected(_path: String) -> void:
 	pass # Replace with function body.
 
 func _on_go_button_button_down() -> void:
-	go_roulette()
+	if match_info.match_state == 2:
+		go_roulette()
 
 func _on_go_button_button_up() -> void:
-	stop_roulette()
+	if match_info.match_state == 2:
+		stop_roulette()
 
+func _on_rotation_spin_box_value_changed(value: float) -> void:
+	roulette_rb.global_rotation.y = deg_to_rad(round(value))
+	check_roulette_result()
 
-
-
-func obtener_segmento_apuntado() -> int:
-	var numero_de_segmentos : int = match_info.roulette_info.r_segments.size()
-	#print("Numero de segmentos: ", numero_de_segmentos)
-	# 1. Obtener la rotación actual en Y y convertirla a grados positivos (0 a 360)
-	var rotacion_y_grados = fposmod(rad_to_deg(roulette_rb.global_rotation.y), 360.0)
-	
-	# 2. Sincronizar con el desfase del shader (nuestro offset_shader era PI = 180 grados)
-	# Si en el script anterior usaste '+ offset_shader', aquí lo restamos.
-	var grados_corregidos = rotacion_y_grados - 180.0
-	
-	# 3. Sumar la posición de la flecha en el mundo
-	grados_corregidos -= offset_flecha_grados
-	
-	# 4. Asegurar que el resultado final siga estando entre 0 y 360
-	grados_corregidos = fposmod(grados_corregidos, 360.0)
-	
-	# 5. Calcular cuántos grados mide cada segmento
-	var grados_por_segmento = 360.0 / numero_de_segmentos
-	
-	# 6. Dividir y aplicar 'floor' para obtener el ID del segmento (0, 1, 2...)
-	var id_segmento = floor(grados_corregidos / grados_por_segmento)
-	
-	# Invertir el ID si el disco rota en sentido horario
-	# (Dependiendo de si sumas o restas rotación, descomenta la línea de abajo si te da al revés)
-	id_segmento = (numero_de_segmentos - 1) - id_segmento
-	id_segmento = int(fposmod(id_segmento, numero_de_segmentos))
-	
-	return id_segmento
+func _on_state_popup_menu_index_pressed(index: int) -> void:
+	match index:
+		0:
+			pass
+		1:
+			start_match()

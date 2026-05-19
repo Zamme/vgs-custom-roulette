@@ -8,15 +8,25 @@
 [ext_resource type="Texture2D" uid="uid://cek0niwhg1pw" path="res://assets/textures/taula_fusta_orm.png" id="3_y5sdm"]
 [ext_resource type="Script" uid="uid://cbraaod2783xm" path="res://src/scripts/match_roulette.gd" id="4_3ntpd"]
 [ext_resource type="PackedScene" uid="uid://bdwbwjk4tymch" path="res://src/roulette/roulette_01.tscn" id="4_y5sdm"]
-[ext_resource type="Texture2D" uid="uid://dufla825tpamv" path="res://assets/textures/go_button.png" id="5_5644n"]
 [ext_resource type="Script" uid="uid://cyv8okel0e4x0" path="res://src/scripts/go_button.gd" id="6_jl3iu"]
 [ext_resource type="PackedScene" uid="uid://b1tsrrd2rge6u" path="res://src/other/arrow_01.tscn" id="10_an4x1"]
 [ext_resource type="AudioStream" uid="uid://cna8sb3lam1sa" path="res://assets/audio/kitchen_ambient_01.mp3" id="12_h1ovk"]
 [ext_resource type="AudioStream" uid="uid://bh32aj4upuv1g" path="res://assets/audio/car_loop.wav" id="13_drlgp"]
 [ext_resource type="AudioStream" uid="uid://d4g8qp1s2e3yp" path="res://assets/audio/heyy.wav" id="14_84jov"]
 [ext_resource type="AudioStream" uid="uid://dbnsuxn3gxynx" path="res://assets/audio/music_01.mp3" id="15_ab0bp"]
+[ext_resource type="PackedScene" uid="uid://o0lwda8m7o4f" path="res://src/other/Fork.tscn" id="16_hpdgp"]
+[ext_resource type="PackedScene" uid="uid://dinq5j31fgrw" path="res://src/other/KitchenKnife.tscn" id="17_06v7e"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3ntpd"]
+
+[sub_resource type="Gradient" id="Gradient_hpdgp"]
+offsets = PackedFloat32Array(0.5060241, 0.59638554)
+colors = PackedColorArray(0, 1, 0, 1, 0.38431373, 0.64705884, 0.38431373, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_06v7e"]
+gradient = SubResource("Gradient_hpdgp")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="QuadMesh" id="QuadMesh_bmh8m"]
 size = Vector2(5, 5)
@@ -69,12 +79,12 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
 theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
 theme_override_constants/outline_size = 2
-theme_override_constants/h_separation = 50
+theme_override_constants/h_separation = 5
 theme_override_fonts/font = ExtResource("2_7meom")
 
 [node name="MatchPopupMenu" type="PopupMenu" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/MatchMenu" unique_id=1138947218]
-title = "Match Menu"
-item_count = 5
+title = "Match"
+item_count = 4
 item_0/text = "Nou"
 item_0/id = 0
 item_1/text = "Carregar"
@@ -83,20 +93,27 @@ item_2/text = "Guardar"
 item_2/id = 2
 item_3/text = "Sortir"
 item_3/id = 3
-item_4/text = "Play"
-item_4/id = 4
 
 [node name="MatchPropertiesPopupMenu" type="PopupMenu" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/MatchMenu" unique_id=145529627]
-title = "Match Properties"
+title = "Config"
 item_count = 2
 item_0/text = "Load Roulette"
 item_0/id = 0
 item_1/text = "Load Game"
 item_1/id = 1
 
+[node name="StatePopupMenu" type="PopupMenu" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/MatchMenu" unique_id=1313492497]
+title = "Play"
+item_count = 2
+item_0/text = "Resume"
+item_0/id = 0
+item_1/text = "Start"
+item_1/id = 1
+
 [node name="PanelContainer" type="PanelContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer" unique_id=1706002709]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 8
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer" unique_id=288010673]
@@ -138,6 +155,13 @@ layout_mode = 2
 
 [node name="MatchPlayerVBoxContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/PlayersMainVBoxContainer/MarginContainer/PanelContainer/VBoxContainer/PlayersVBoxContainer" unique_id=1736111174 instance=ExtResource("3_s4p1r")]
 layout_mode = 2
+
+[node name="RotationSpinBox" type="SpinBox" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer" unique_id=1128905970]
+visible = false
+layout_mode = 2
+min_value = -360.0
+max_value = 360.0
+rounded = true
 
 [node name="LoadMatchFileDialog" type="FileDialog" parent="MatchControl" unique_id=725353982]
 title = "Open a File"
@@ -194,13 +218,15 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(2.9841065e-06, 0, 0.7930129, 1)
+theme_override_colors/font_focus_color = Color(2.9841065e-06, 0, 0.7930129, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.7851361, 0.7871538, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("2_7meom")
-theme_override_font_sizes/font_size = 69
+theme_override_font_sizes/font_size = 56
 text = "GO"
-icon = ExtResource("5_5644n")
+icon = SubResource("GradientTexture2D_06v7e")
 flat = true
 icon_alignment = 1
 expand_icon = true
@@ -219,7 +245,7 @@ transform = Transform3D(1, 0, 0, 0, 0.2300667, 0.97317487, 0, -0.97317487, 0.230
 light_energy = 10.0
 
 [node name="MatchRoulette" type="RigidBody3D" parent="." unique_id=1576497822]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2640381, 0)
+transform = Transform3D(-0.29237175, 0, -0.9563047, 0, 1, 0, 0.9563047, 0, -0.29237175, 0, 0.2640381, 0)
 collision_layer = 2
 collision_mask = 0
 axis_lock_linear_x = true
@@ -249,9 +275,17 @@ stream = ExtResource("14_84jov")
 [node name="MusicAudio" type="AudioStreamPlayer" parent="." unique_id=1418999866]
 stream = ExtResource("15_ab0bp")
 
+[node name="Fork" parent="." unique_id=1152937941 instance=ExtResource("16_hpdgp")]
+transform = Transform3D(0.205, 0, 0, 0, 0.205, 0, 0, 0, 0.205, -1.8749667, 0.065, 0)
+
+[node name="KitchenKnife" parent="." unique_id=679675806 instance=ExtResource("17_06v7e")]
+transform = Transform3D(0.245, 0, 0, 0, 0.245, 0, 0, 0, 0.245, -1.518, 0.025, -0.061)
+
 [connection signal="index_pressed" from="MatchControl/PanelContainer/MarginContainer/VBoxContainer/MatchMenu/MatchPopupMenu" to="." method="_on_match_menu_index_pressed"]
 [connection signal="index_pressed" from="MatchControl/PanelContainer/MarginContainer/VBoxContainer/MatchMenu/MatchPropertiesPopupMenu" to="." method="_on_match_properties_popup_menu_index_pressed"]
+[connection signal="index_pressed" from="MatchControl/PanelContainer/MarginContainer/VBoxContainer/MatchMenu/StatePopupMenu" to="." method="_on_state_popup_menu_index_pressed"]
 [connection signal="editing_toggled" from="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer/MatchNameLineEdit" to="MatchControl" method="_on_match_name_line_edit_editing_toggled"]
+[connection signal="value_changed" from="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/RotationSpinBox" to="." method="_on_rotation_spin_box_value_changed"]
 [connection signal="file_selected" from="MatchControl/LoadMatchFileDialog" to="." method="_on_load_match_file_dialog_file_selected"]
 [connection signal="file_selected" from="MatchControl/LoadGameFileDialog" to="." method="_on_load_game_file_dialog_file_selected"]
 [connection signal="file_selected" from="MatchControl/LoadRouletteFileDialog" to="." method="_on_load_roulette_file_dialog_file_selected"]

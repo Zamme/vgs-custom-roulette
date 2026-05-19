@@ -35,9 +35,9 @@ func _on_up_button_button_up() -> void:
 func _on_down_button_button_up() -> void:
 	move_player_down()
 
-func _on_nom_jugador_line_edit_text_changed(new_text: String) -> void:
+func _on_nom_jugador_line_edit_text_changed(_new_text: String) -> void:
 	pass
-	#modify_player_name(new_text)
+	#modify_player_name(_new_text)
 
 func _on_nom_jugador_line_edit_editing_toggled(toggled_on: bool) -> void:
 	if not toggled_on:

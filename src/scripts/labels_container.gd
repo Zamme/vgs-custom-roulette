@@ -44,8 +44,8 @@ func generar_textos(segmentos):
 		# Si prefieres que el texto siempre se lea horizontal, comenta la línea de abajo
 		label.rotation.y = -angulo + deg_to_rad(-90)
 
-func generar_textos_radiales(segmentos, radio_dev: float = 0.5, mida_font: float = 22.0):
-	radio_dev = radio_dev
+func generar_textos_radiales(segmentos, _radio_dev: float = 0.5, mida_font: float = 22.0):
+	radio_dev = _radio_dev
 	var numero_de_segmentos = segmentos.size()
 	for i in range(numero_de_segmentos):
 		var label = Label3D.new()

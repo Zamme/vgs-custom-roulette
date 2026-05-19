@@ -82,6 +82,8 @@ func load_match(_match_name : String):
 	var _game_info : GameInfo = GameInfo.new()
 	_game_info = load_game(_match_file.get_value("General", "Game", null))
 	_match_info.create_match(_match_file.get_value("General", "Name", "NULL"),
+								_match_file.get_value("General", "Order", 0),
+								_match_file.get_value("General", "State", 0),
 								_roulette_info,
 											_game_info)
 	return _match_info
@@ -124,6 +126,8 @@ func save_match(_match_info : MatchInfo) -> bool:
 	var _match_file : ConfigFile = ConfigFile.new()
 	
 	_match_file.set_value("General", "Name", _match_info.match_name)
+	_match_file.set_value("General", "Order", _match_info.match_order)
+	_match_file.set_value("General", "State", _match_info.match_state)
 	_match_file.set_value("General", "Roulette", _match_info.roulette_info.r_name)
 	_match_file.set_value("General", "Game", _match_info.game_info.g_name)
 
