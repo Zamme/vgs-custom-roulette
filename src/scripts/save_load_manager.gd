@@ -81,11 +81,17 @@ func load_match(_match_name : String):
 	_roulette_info = load_roulette(_match_file.get_value("General", "Roulette", null))
 	var _game_info : GameInfo = GameInfo.new()
 	_game_info = load_game(_match_file.get_value("General", "Game", null))
+	var _results : Dictionary = Dictionary()
+	var _results_keys : Array = _match_file.get_section_keys("Results")
+	for _result_key in _results_keys:
+		_results[_result_key] = _match_file.get_value("Results", _result_key, -1)
 	_match_info.create_match(_match_file.get_value("General", "Name", "NULL"),
 								_match_file.get_value("General", "Order", 0),
+								_match_file.get_value("General", "Results", Dictionary()),
 								_match_file.get_value("General", "State", 0),
 								_roulette_info,
-											_game_info)
+								_game_info,
+								_match_file.get_value("General", "Turn", 0))
 	return _match_info
 
 func load_roulette(_roulette_name : String):
@@ -130,7 +136,9 @@ func save_match(_match_info : MatchInfo) -> bool:
 	_match_file.set_value("General", "State", _match_info.match_state)
 	_match_file.set_value("General", "Roulette", _match_info.roulette_info.r_name)
 	_match_file.set_value("General", "Game", _match_info.game_info.g_name)
-
+	_match_file.set_value("General", "Turn", _match_info.match_turn)
+	for _key in _match_info.match_results:
+		_match_file.set_value("Results", _key, _match_info.match_results[_key])
 	var _match_filepath : String = USER_PREFIX + MATCHES_DIRNAME.path_join(_match_info.match_name) + MATCHES_FILES_EXT
 	check_matches_dir()
 	var _error : Error = _match_file.save(_match_filepath)

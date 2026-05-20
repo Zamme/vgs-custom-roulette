@@ -116,23 +116,31 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer" unique_id=288010673]
+[node name="MarginContainer" type="MarginContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer" unique_id=1009724244]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer" unique_id=288010673]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=199480221]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer" unique_id=199480221]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer" unique_id=1389581213]
+[node name="Label" type="Label" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1389581213]
 layout_mode = 2
 text = "Match Name"
 
-[node name="MatchNameLineEdit" type="LineEdit" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer" unique_id=98406326]
+[node name="MatchNameLineEdit" type="LineEdit" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=98406326]
 layout_mode = 2
 
-[node name="PlayersMainVBoxContainer" type="VBoxContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer" unique_id=1786724268]
+[node name="PlayersMainVBoxContainer" type="VBoxContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1786724268]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/PlayersMainVBoxContainer" unique_id=1526034746]
+[node name="MarginContainer" type="MarginContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/PlayersMainVBoxContainer" unique_id=1526034746]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 5
@@ -140,28 +148,64 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="PanelContainer" type="PanelContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/PlayersMainVBoxContainer/MarginContainer" unique_id=508049875]
+[node name="PanelContainer" type="PanelContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/PlayersMainVBoxContainer/MarginContainer" unique_id=508049875]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/PlayersMainVBoxContainer/MarginContainer/PanelContainer" unique_id=640674022]
+[node name="VBoxContainer" type="VBoxContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/PlayersMainVBoxContainer/MarginContainer/PanelContainer" unique_id=640674022]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/PlayersMainVBoxContainer/MarginContainer/PanelContainer/VBoxContainer" unique_id=1830166210]
+[node name="Label" type="Label" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/PlayersMainVBoxContainer/MarginContainer/PanelContainer/VBoxContainer" unique_id=1830166210]
 layout_mode = 2
 text = "Players"
 
-[node name="PlayersVBoxContainer" type="VBoxContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/PlayersMainVBoxContainer/MarginContainer/PanelContainer/VBoxContainer" unique_id=470865026]
+[node name="ScrollContainer" type="ScrollContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/PlayersMainVBoxContainer/MarginContainer/PanelContainer/VBoxContainer" unique_id=1254029588]
+custom_minimum_size = Vector2(0, 460)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayersVBoxContainer" type="VBoxContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/PlayersMainVBoxContainer/MarginContainer/PanelContainer/VBoxContainer/ScrollContainer" unique_id=470865026]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="MatchPlayerVBoxContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/PlayersMainVBoxContainer/MarginContainer/PanelContainer/VBoxContainer/ScrollContainer/PlayersVBoxContainer" unique_id=1736111174 instance=ExtResource("3_s4p1r")]
 layout_mode = 2
 
-[node name="MatchPlayerVBoxContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/PlayersMainVBoxContainer/MarginContainer/PanelContainer/VBoxContainer/PlayersVBoxContainer" unique_id=1736111174 instance=ExtResource("3_s4p1r")]
-layout_mode = 2
-
-[node name="RotationSpinBox" type="SpinBox" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer" unique_id=1128905970]
+[node name="RotationSpinBox" type="SpinBox" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1128905970]
 visible = false
 layout_mode = 2
 min_value = -360.0
 max_value = 360.0
 rounded = true
+
+[node name="GOButton" type="Button" parent="MatchControl" unique_id=642729970]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.5
+offset_top = -77.5
+offset_right = 77.5
+offset_bottom = 77.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(2.9841065e-06, 0, 0.7930129, 1)
+theme_override_colors/font_focus_color = Color(2.9841065e-06, 0, 0.7930129, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.7851361, 0.7871538, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_7meom")
+theme_override_font_sizes/font_size = 56
+text = "GO"
+icon = SubResource("GradientTexture2D_06v7e")
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("6_jl3iu")
 
 [node name="LoadMatchFileDialog" type="FileDialog" parent="MatchControl" unique_id=725353982]
 title = "Open a File"
@@ -203,34 +247,67 @@ access = 1
 hidden_files_toggle_enabled = false
 deleting_enabled = false
 
-[node name="GOButton" type="Button" parent="MatchControl" unique_id=642729970]
+[node name="StartTurnAcceptDialog" type="AcceptDialog" parent="MatchControl" unique_id=738656350]
+oversampling_override = 1.0
+title = "Inici Jugada"
+initial_position = 1
+size = Vector2i(250, 181)
+content_scale_aspect = 4
+theme_override_constants/buttons_separation = 59
+dialog_text = "Torn jugada aaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+dialog_autowrap = true
+
+[node name="TurnResultConfirmDialog" type="ConfirmationDialog" parent="MatchControl" unique_id=1487113619]
+oversampling_override = 1.0
+title = "Resultat"
+initial_position = 1
+size = Vector2i(300, 207)
+content_scale_aspect = 4
+dialog_autowrap = true
+cancel_button_text = "Repetir"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MatchControl/TurnResultConfirmDialog" unique_id=1587556727]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 292.0
+offset_bottom = 158.0
+
+[node name="PlayerResultTitleLabel" type="Label" parent="MatchControl/TurnResultConfirmDialog/VBoxContainer" unique_id=553779008]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_7meom")
+theme_override_font_sizes/font_size = 24
+text = "Resultat:"
+
+[node name="PlayerResultLabel" type="Label" parent="MatchControl/TurnResultConfirmDialog/VBoxContainer" unique_id=1363386631]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_7meom")
+theme_override_font_sizes/font_size = 28
+text = "Joan"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="TurnResultColorRect" type="ColorRect" parent="MatchControl/TurnResultConfirmDialog/VBoxContainer" unique_id=938762812]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="TurnResultLabel" type="Label" parent="MatchControl/TurnResultConfirmDialog/VBoxContainer/TurnResultColorRect" unique_id=670173920]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -77.5
-offset_top = -77.5
-offset_right = 77.5
-offset_bottom = 77.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_colors/font_color = Color(2.9841065e-06, 0, 0.7930129, 1)
-theme_override_colors/font_focus_color = Color(2.9841065e-06, 0, 0.7930129, 1)
-theme_override_colors/font_pressed_color = Color(0, 0.7851361, 0.7871538, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("2_7meom")
-theme_override_font_sizes/font_size = 56
-text = "GO"
-icon = SubResource("GradientTexture2D_06v7e")
-flat = true
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("6_jl3iu")
+theme_override_font_sizes/font_size = 21
+text = "Catalunyaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Taula" type="MeshInstance3D" parent="." unique_id=952713069]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
@@ -284,11 +361,15 @@ transform = Transform3D(0.245, 0, 0, 0, 0.245, 0, 0, 0, 0.245, -1.518, 0.025, -0
 [connection signal="index_pressed" from="MatchControl/PanelContainer/MarginContainer/VBoxContainer/MatchMenu/MatchPopupMenu" to="." method="_on_match_menu_index_pressed"]
 [connection signal="index_pressed" from="MatchControl/PanelContainer/MarginContainer/VBoxContainer/MatchMenu/MatchPropertiesPopupMenu" to="." method="_on_match_properties_popup_menu_index_pressed"]
 [connection signal="index_pressed" from="MatchControl/PanelContainer/MarginContainer/VBoxContainer/MatchMenu/StatePopupMenu" to="." method="_on_state_popup_menu_index_pressed"]
-[connection signal="editing_toggled" from="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer/MatchNameLineEdit" to="MatchControl" method="_on_match_name_line_edit_editing_toggled"]
-[connection signal="value_changed" from="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/RotationSpinBox" to="." method="_on_rotation_spin_box_value_changed"]
+[connection signal="editing_toggled" from="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MatchNameLineEdit" to="MatchControl" method="_on_match_name_line_edit_editing_toggled"]
+[connection signal="value_changed" from="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/RotationSpinBox" to="." method="_on_rotation_spin_box_value_changed"]
+[connection signal="button_down" from="MatchControl/GOButton" to="." method="_on_go_button_button_down"]
+[connection signal="button_up" from="MatchControl/GOButton" to="." method="_on_go_button_button_up"]
 [connection signal="file_selected" from="MatchControl/LoadMatchFileDialog" to="." method="_on_load_match_file_dialog_file_selected"]
 [connection signal="file_selected" from="MatchControl/LoadGameFileDialog" to="." method="_on_load_game_file_dialog_file_selected"]
 [connection signal="file_selected" from="MatchControl/LoadRouletteFileDialog" to="." method="_on_load_roulette_file_dialog_file_selected"]
 [connection signal="file_selected" from="MatchControl/SaveMatchFileDialog" to="." method="_on_save_match_file_dialog_file_selected"]
-[connection signal="button_down" from="MatchControl/GOButton" to="." method="_on_go_button_button_down"]
-[connection signal="button_up" from="MatchControl/GOButton" to="." method="_on_go_button_button_up"]
+[connection signal="canceled" from="MatchControl/StartTurnAcceptDialog" to="." method="_on_start_turn_accept_dialog_canceled"]
+[connection signal="confirmed" from="MatchControl/StartTurnAcceptDialog" to="." method="_on_start_turn_accept_dialog_confirmed"]
+[connection signal="canceled" from="MatchControl/TurnResultConfirmDialog" to="." method="_on_turn_result_confirm_dialog_canceled"]
+[connection signal="confirmed" from="MatchControl/TurnResultConfirmDialog" to="." method="_on_turn_result_confirm_dialog_confirmed"]

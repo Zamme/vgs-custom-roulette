@@ -8,12 +8,14 @@ const default_damp : float = 0.5
 @onready var load_roulette_popup : FileDialog = $MatchControl/LoadRouletteFileDialog
 @onready var load_game_popup : FileDialog = $MatchControl/LoadGameFileDialog
 @onready var load_match_popup : FileDialog = $MatchControl/LoadMatchFileDialog
+@onready var start_turn_dialog : AcceptDialog = $MatchControl/StartTurnAcceptDialog
+@onready var turn_result_dialog : AcceptDialog = $MatchControl/TurnResultConfirmDialog
 @onready var ambient_audio : AudioStreamPlayer = $AmbientAudio
 @onready var rolling_audio : AudioStreamPlayer = $RollingAudio
 @onready var hey_audio : AudioStreamPlayer = $HeyAudio
 @onready var music_audio : AudioStreamPlayer = $MusicAudio
 
-@onready var rot_spinbox: SpinBox = $MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/RotationSpinBox
+#@onready var rot_spinbox: SpinBox = $rotationsp
 
 
 # Ajuste fino si tu flecha no empieza en el "Grado 0" del shader
@@ -26,6 +28,7 @@ var match_info : MatchInfo = MatchInfo.new()
 var labels_container_packedscene : PackedScene = preload("res://src/editor/labels_container.tscn")
 var labels_container_instance : LabelsContainer = null
 var is_roulette_rolling : bool
+var current_turn_segment_result : int
 
 
 func _ready() -> void:
@@ -37,8 +40,13 @@ func _ready() -> void:
 	#rot_spinbox.value = -107
 
 func check_roulette_result() -> void:
-	print("Roulette Rotation: ", rad_to_deg(roulette_rb.global_rotation.y))
-	print("Segment: ", get_segment_result())
+	current_turn_segment_result = get_segment_result()
+	#print("Roulette Rotation: ", rad_to_deg(roulette_rb.global_rotation.y))
+	#print("Segment: ", current_turn_segment_result)
+	
+
+func finish_match() -> void:
+	print("Match finished")
 
 func get_segment_result() -> int:
 	var n_segments : int = match_info.roulette_info.r_segments.size()
@@ -56,7 +64,6 @@ func get_segment_result() -> int:
 	return segment_id
 
 func go_roulette() -> void:
-	check_roulette_result()
 	is_roulette_rolling = true
 	play_ambient_audio(false)
 	play_music_audio(false)
@@ -80,6 +87,12 @@ func new_match() -> void:
 	match_info.create_default_match()
 	update_match_scene()
 
+func has_next_turn() -> bool:
+	var _has_next : bool
+	match_info.match_turn += 1
+	_has_next = not(match_info.match_turn >= match_info.game_info.g_players.size())
+	return _has_next
+
 func play_ambient_audio(_play : bool) -> void:
 	ambient_audio.playing = _play
 
@@ -89,18 +102,30 @@ func play_music_audio(_play : bool) -> void:
 func play_rolling_audio(_play : bool) -> void:
 	rolling_audio.playing = _play
 
+func resume_match() -> void:
+	start_turn()
+
 func roulette_stopped():
 	is_roulette_rolling = false
 	play_rolling_audio(false)
 	hey_audio.play()
 	check_roulette_result()
+	show_turn_result()
 
 func save_match():
 	var _saved : bool = Globals.save_load_manager.save_match(match_info)
 	print("Saved: " + str(_saved))
 
+func show_turn_result() -> void:
+	update_turn_result_dialog()
+	turn_result_dialog.popup_centered()
+
 func start_match() -> void:
-	pass
+	resume_match()
+
+func start_turn() -> void:
+	update_start_turn_dialog()
+	start_turn_dialog.popup_centered()
 
 func stop_roulette() -> void:
 	roulette_rb.angular_damp = default_damp
@@ -124,6 +149,25 @@ func update_match_scene() -> void:
 func update_roulette() -> void:
 	roulette_rb.update_roulette_object(match_info.roulette_info)
 	update_labels_container()
+
+func update_start_turn_dialog() -> void:
+	var _player_name : String
+	_player_name = match_info.game_info.g_players[match_info.match_turn].p_name
+	var _sentence : String = "Torn de jugada: \n" + _player_name + " !!!"
+	start_turn_dialog.get_label().horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	start_turn_dialog.dialog_text = _sentence
+
+func update_turn_result_dialog() -> void:
+	var _player_result_label : Label = turn_result_dialog.find_child("PlayerResultLabel", true)
+	var _turn_result_colorrect : ColorRect = turn_result_dialog.find_child("TurnResultColorRect", true)
+	var _turn_result_label : Label = turn_result_dialog.find_child("TurnResultLabel")
+	
+	_player_result_label.text = match_info.game_info.g_players[match_info.match_turn].p_name
+	var _roulette_info : RouletteInfo = match_info.roulette_info
+	var _segments : Array = _roulette_info.r_segments
+	var _result_segment : SegmentInfo = _segments[current_turn_segment_result]
+	_turn_result_colorrect.color = _result_segment.s_color
+	_turn_result_label.text = _result_segment.s_name
 
 func _on_match_menu_index_pressed(index: int) -> void:
 	match index:
@@ -185,3 +229,18 @@ func _on_state_popup_menu_index_pressed(index: int) -> void:
 			pass
 		1:
 			start_match()
+
+func _on_start_turn_accept_dialog_confirmed() -> void:
+	match_info.match_state = 2
+
+func _on_start_turn_accept_dialog_canceled() -> void:
+	match_info.match_state = 2
+
+func _on_turn_result_confirm_dialog_confirmed() -> void:
+	if has_next_turn():
+		resume_match()
+	else:
+		finish_match()
+
+func _on_turn_result_confirm_dialog_canceled() -> void:
+	pass # Replace with function body.

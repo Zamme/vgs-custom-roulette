@@ -1,8 +1,8 @@
 class_name MatchControl extends Control
 
 
-@onready var players_vbox_container = $PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/PlayersMainVBoxContainer
-@onready var match_name_lineedit : LineEdit = $PanelContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer/MatchNameLineEdit
+@onready var players_vbox_container = $PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/PlayersMainVBoxContainer/MarginContainer/PanelContainer/VBoxContainer/ScrollContainer/PlayersVBoxContainer
+@onready var match_name_lineedit : LineEdit = $PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MatchNameLineEdit
 
 var match_player_vbox_prefab : PackedScene = preload("res://src/ui/match_player_v_box_container.tscn")
 
@@ -23,11 +23,14 @@ func update_match_lineedit():
 
 func update_players_list() -> void:
 	clear_players_list()
+	var _current_match_info : MatchInfo = Globals.match_scene.match_info
 	var _players : Array = Globals.match_scene.match_info.game_info.g_players
-	for _player in _players:
+	for i_player in _players.size():
 		var _new_mpvbox : MatchPlayerVBox = match_player_vbox_prefab.instantiate()
 		players_vbox_container.add_child(_new_mpvbox)
-		_new_mpvbox.set_player_name_label(_player.p_name)
+		_new_mpvbox.set_player_name_label(_players[i_player].p_name)
+		#var _color : Color = _current_match_info.match_results[i_player]
+		#_new_mpvbox.set_result_color_rect()
 
 func _on_match_name_line_edit_editing_toggled(toggled_on: bool) -> void:
 	if not toggled_on:
