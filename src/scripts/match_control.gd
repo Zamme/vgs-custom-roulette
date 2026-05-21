@@ -29,8 +29,20 @@ func update_players_list() -> void:
 		var _new_mpvbox : MatchPlayerVBox = match_player_vbox_prefab.instantiate()
 		players_vbox_container.add_child(_new_mpvbox)
 		_new_mpvbox.set_player_name_label(_players[i_player].p_name)
-		#var _color : Color = _current_match_info.match_results[i_player]
-		#_new_mpvbox.set_result_color_rect()
+		var _nom_jugador : String = _players[i_player].p_name
+		var i_player_segment_result : int = -1
+		if _current_match_info.match_results.has(_nom_jugador):
+			i_player_segment_result = _current_match_info.match_results[_nom_jugador]
+		if i_player_segment_result > -1:
+			var _player_segment : SegmentInfo = _current_match_info.roulette_info.r_segments[i_player_segment_result]
+			var _player_result_text : String = _player_segment.s_name
+			var _player_result_color : Color = _player_segment.s_color
+			_new_mpvbox.set_result_label(_player_result_text)
+			#var _color : Color = 
+			_new_mpvbox.set_result_color_rect(_player_result_color)
+			pass
+		else:
+			_new_mpvbox.set_result_color_rect(Color.GRAY)
 
 func _on_match_name_line_edit_editing_toggled(toggled_on: bool) -> void:
 	if not toggled_on:

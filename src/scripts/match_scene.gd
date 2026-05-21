@@ -14,6 +14,7 @@ const default_damp : float = 0.5
 @onready var rolling_audio : AudioStreamPlayer = $RollingAudio
 @onready var hey_audio : AudioStreamPlayer = $HeyAudio
 @onready var music_audio : AudioStreamPlayer = $MusicAudio
+@onready var go_button : GoButton = $MatchControl/GOButton
 
 #@onready var rot_spinbox: SpinBox = $rotationsp
 
@@ -41,12 +42,16 @@ func _ready() -> void:
 
 func check_roulette_result() -> void:
 	current_turn_segment_result = get_segment_result()
+	var _current_player_name : String = match_info.game_info.g_players[match_info.match_turn].p_name
+	match_info.match_results[_current_player_name] = current_turn_segment_result
+	print("Current player name: ", _current_player_name, " Result: ", current_turn_segment_result)
+	Globals.match_control.update_all()
 	#print("Roulette Rotation: ", rad_to_deg(roulette_rb.global_rotation.y))
 	#print("Segment: ", current_turn_segment_result)
-	
 
 func finish_match() -> void:
 	print("Match finished")
+	set_match_state(3)
 
 func get_segment_result() -> int:
 	var n_segments : int = match_info.roulette_info.r_segments.size()
@@ -83,6 +88,7 @@ func load_roulette(_roulette_name : String) -> void:
 	update_match_scene()
 
 func new_match() -> void:
+	set_match_state(0)
 	match_info = MatchInfo.new()
 	match_info.create_default_match()
 	update_match_scene()
@@ -110,7 +116,12 @@ func roulette_stopped():
 	play_rolling_audio(false)
 	hey_audio.play()
 	check_roulette_result()
+	Globals.match_control.update_all()
 	show_turn_result()
+
+func set_match_state(_new_state : int) -> void:
+	match_info.match_state = _new_state
+	update_match_state()
 
 func save_match():
 	var _saved : bool = Globals.save_load_manager.save_match(match_info)
@@ -121,6 +132,9 @@ func show_turn_result() -> void:
 	turn_result_dialog.popup_centered()
 
 func start_match() -> void:
+	match_info.match_turn = 0
+	match_info.match_results = Dictionary()
+	Globals.match_control.update_all()
 	resume_match()
 
 func start_turn() -> void:
@@ -145,6 +159,17 @@ func update_match_control() -> void:
 func update_match_scene() -> void:
 	update_roulette()
 	update_match_control()
+
+func update_match_state() -> void:
+	match match_info.match_state:
+		0: # None
+			go_button.disabled = true
+		1: # Beginning
+			pass
+		2: # Playing
+			go_button.disabled = false
+		3: # Finished
+			go_button.disabled = true
 
 func update_roulette() -> void:
 	roulette_rb.update_roulette_object(match_info.roulette_info)
@@ -226,15 +251,15 @@ func _on_rotation_spin_box_value_changed(value: float) -> void:
 func _on_state_popup_menu_index_pressed(index: int) -> void:
 	match index:
 		0:
-			pass
+			resume_match()
 		1:
 			start_match()
 
 func _on_start_turn_accept_dialog_confirmed() -> void:
-	match_info.match_state = 2
+	set_match_state(2)
 
 func _on_start_turn_accept_dialog_canceled() -> void:
-	match_info.match_state = 2
+	set_match_state(2)
 
 func _on_turn_result_confirm_dialog_confirmed() -> void:
 	if has_next_turn():
@@ -243,4 +268,5 @@ func _on_turn_result_confirm_dialog_confirmed() -> void:
 		finish_match()
 
 func _on_turn_result_confirm_dialog_canceled() -> void:
+	# Repeat turn
 	pass # Replace with function body.

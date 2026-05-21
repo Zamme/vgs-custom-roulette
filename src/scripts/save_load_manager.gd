@@ -82,12 +82,13 @@ func load_match(_match_name : String):
 	var _game_info : GameInfo = GameInfo.new()
 	_game_info = load_game(_match_file.get_value("General", "Game", null))
 	var _results : Dictionary = Dictionary()
-	var _results_keys : Array = _match_file.get_section_keys("Results")
-	for _result_key in _results_keys:
-		_results[_result_key] = _match_file.get_value("Results", _result_key, -1)
+	if _match_file.has_section("Results"):
+		var _results_keys : Array = _match_file.get_section_keys("Results")
+		for _result_key in _results_keys:
+			_results[_result_key] = _match_file.get_value("Results", _result_key, -1)
 	_match_info.create_match(_match_file.get_value("General", "Name", "NULL"),
 								_match_file.get_value("General", "Order", 0),
-								_match_file.get_value("General", "Results", Dictionary()),
+								_results,
 								_match_file.get_value("General", "State", 0),
 								_roulette_info,
 								_game_info,
