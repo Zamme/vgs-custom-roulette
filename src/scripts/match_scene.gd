@@ -15,6 +15,9 @@ const default_damp : float = 0.5
 @onready var hey_audio : AudioStreamPlayer = $HeyAudio
 @onready var music_audio : AudioStreamPlayer = $MusicAudio
 @onready var go_button : GoButton = $MatchControl/GOButton
+@onready var match_popup_menu : PopupMenu = $MatchControl/PanelContainer/MarginContainer/VBoxContainer/MatchMenu/MatchPopupMenu
+@onready var match_properties_popup_menu : PopupMenu = $MatchControl/PanelContainer/MarginContainer/VBoxContainer/MatchMenu/MatchPropertiesPopupMenu
+@onready var state_popup_menu : PopupMenu = $MatchControl/PanelContainer/MarginContainer/VBoxContainer/MatchMenu/StatePopupMenu
 
 #@onready var rot_spinbox: SpinBox = $rotationsp
 
@@ -49,6 +52,10 @@ func check_roulette_result() -> void:
 	#print("Roulette Rotation: ", rad_to_deg(roulette_rb.global_rotation.y))
 	#print("Segment: ", current_turn_segment_result)
 
+func enable_popup_menu(_popupmenu : PopupMenu, _enable : bool):
+	for i_item in _popupmenu.item_count:
+		_popupmenu.set_item_disabled(i_item,not(_enable))
+
 func finish_match() -> void:
 	print("Match finished")
 	set_match_state(3)
@@ -72,7 +79,8 @@ func go_roulette() -> void:
 	is_roulette_rolling = true
 	play_ambient_audio(false)
 	play_music_audio(false)
-	play_rolling_audio(true)
+	if not(rolling_audio.playing):
+		play_rolling_audio(true)
 	roulette_rb.angular_velocity = default_rotation_velocity
 
 func load_game(_game_name : String) -> void:
@@ -81,6 +89,7 @@ func load_game(_game_name : String) -> void:
 
 func load_match(_match_name : String) -> void:
 	match_info = Globals.save_load_manager.load_match(_match_name)
+	enable_popup_menu(match_properties_popup_menu, true)
 	update_match_scene()
 
 func load_roulette(_roulette_name : String) -> void:
@@ -164,10 +173,12 @@ func update_match_state() -> void:
 	match match_info.match_state:
 		0: # None
 			go_button.disabled = true
+			enable_popup_menu(match_properties_popup_menu, true)
 		1: # Beginning
 			pass
 		2: # Playing
 			go_button.disabled = false
+			enable_popup_menu(match_properties_popup_menu, false)
 		3: # Finished
 			go_button.disabled = true
 

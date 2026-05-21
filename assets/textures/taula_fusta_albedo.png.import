@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://coiv3r6b48is8"
 path.s3tc="res://.godot/imported/taula_fusta_albedo.png-9ed658eaf87b8df6bf9b1a3505ee5f18.s3tc.ctex"
+path.etc2="res://.godot/imported/taula_fusta_albedo.png-9ed658eaf87b8df6bf9b1a3505ee5f18.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/textures/taula_fusta_albedo.png"
-dest_files=["res://.godot/imported/taula_fusta_albedo.png-9ed658eaf87b8df6bf9b1a3505ee5f18.s3tc.ctex"]
+dest_files=["res://.godot/imported/taula_fusta_albedo.png-9ed658eaf87b8df6bf9b1a3505ee5f18.s3tc.ctex", "res://.godot/imported/taula_fusta_albedo.png-9ed658eaf87b8df6bf9b1a3505ee5f18.etc2.ctex"]
 
 [params]
 

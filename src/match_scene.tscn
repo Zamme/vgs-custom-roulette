@@ -317,9 +317,11 @@ surface_material_override/0 = SubResource("ORMMaterial3D_3ntpd")
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1405166598]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.76, 0)
 
-[node name="OmniLight3D" type="DirectionalLight3D" parent="." unique_id=588050780]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=588050780]
 transform = Transform3D(1, 0, 0, 0, 0.2300667, 0.97317487, 0, -0.97317487, 0.2300667, 0, 4.185, 0)
+visible = false
 light_energy = 10.0
+sky_mode = 1
 
 [node name="MatchRoulette" type="RigidBody3D" parent="." unique_id=1576497822]
 transform = Transform3D(-0.29237175, 0, -0.9563047, 0, 1, 0, 0.9563047, 0, -0.29237175, 0, 0.2640381, 0)

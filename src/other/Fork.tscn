@@ -3,10 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://ngu81g8r8l5s" path="res://assets/gltfs/Fork.glb" id="1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ef4fe"]
+shading_mode = 0
 albedo_color = Color(0.74138474, 0.7413847, 0.74138457, 1)
-metallic = 0.76
-metallic_specular = 0.73
-roughness = 0.7
 
 [node name="Fork" unique_id=1783277508 instance=ExtResource("1")]
 
