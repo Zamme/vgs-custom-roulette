@@ -8,7 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://cek0niwhg1pw" path="res://assets/textures/taula_fusta_orm.png" id="3_y5sdm"]
 [ext_resource type="Script" uid="uid://cbraaod2783xm" path="res://src/scripts/match_roulette.gd" id="4_3ntpd"]
 [ext_resource type="PackedScene" uid="uid://bdwbwjk4tymch" path="res://src/roulette/roulette_01.tscn" id="4_y5sdm"]
+[ext_resource type="Script" uid="uid://yvlflm4rxxpx" path="res://src/scripts/report_confirm_dialog.gd" id="6_06v7e"]
 [ext_resource type="Script" uid="uid://cyv8okel0e4x0" path="res://src/scripts/go_button.gd" id="6_jl3iu"]
+[ext_resource type="PackedScene" uid="uid://c0hs534mh4ww6" path="res://src/ui/report_result_h_box_container.tscn" id="7_ob5my"]
 [ext_resource type="PackedScene" uid="uid://b1tsrrd2rge6u" path="res://src/other/arrow_01.tscn" id="10_an4x1"]
 [ext_resource type="AudioStream" uid="uid://cna8sb3lam1sa" path="res://assets/audio/kitchen_ambient_01.mp3" id="12_h1ovk"]
 [ext_resource type="AudioStream" uid="uid://bh32aj4upuv1g" path="res://assets/audio/car_loop.wav" id="13_drlgp"]
@@ -104,11 +106,13 @@ item_1/id = 1
 
 [node name="StatePopupMenu" type="PopupMenu" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/MatchMenu" unique_id=1313492497]
 title = "Play"
-item_count = 2
+item_count = 3
 item_0/text = "Resume"
 item_0/id = 0
 item_1/text = "Start"
 item_1/id = 1
+item_2/text = "Resultats"
+item_2/id = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer" unique_id=1706002709]
 custom_minimum_size = Vector2(200, 0)
@@ -308,6 +312,27 @@ text = "Catalunyaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+
+[node name="ReportConfirmDialog" type="ConfirmationDialog" parent="MatchControl" unique_id=1185382745]
+oversampling_override = 1.0
+title = "Resultats"
+initial_position = 1
+size = Vector2i(500, 500)
+script = ExtResource("6_06v7e")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MatchControl/ReportConfirmDialog" unique_id=151305558]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 492.0
+offset_bottom = 451.0
+
+[node name="ReportsResultsVBoxContainer" type="VBoxContainer" parent="MatchControl/ReportConfirmDialog/ScrollContainer" unique_id=3925904]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ReportResultHBoxContainer" parent="MatchControl/ReportConfirmDialog/ScrollContainer/ReportsResultsVBoxContainer" unique_id=1258268925 instance=ExtResource("7_ob5my")]
+layout_mode = 2
 
 [node name="Taula" type="MeshInstance3D" parent="." unique_id=952713069]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)

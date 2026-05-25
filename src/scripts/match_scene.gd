@@ -18,6 +18,7 @@ const default_damp : float = 0.5
 @onready var match_popup_menu : PopupMenu = $MatchControl/PanelContainer/MarginContainer/VBoxContainer/MatchMenu/MatchPopupMenu
 @onready var match_properties_popup_menu : PopupMenu = $MatchControl/PanelContainer/MarginContainer/VBoxContainer/MatchMenu/MatchPropertiesPopupMenu
 @onready var state_popup_menu : PopupMenu = $MatchControl/PanelContainer/MarginContainer/VBoxContainer/MatchMenu/StatePopupMenu
+@onready var report_dialog : ReportConfirmDialog = $MatchControl/ReportConfirmDialog
 
 #@onready var rot_spinbox: SpinBox = $rotationsp
 
@@ -59,6 +60,7 @@ func enable_popup_menu(_popupmenu : PopupMenu, _enable : bool):
 func finish_match() -> void:
 	print("Match finished")
 	set_match_state(3)
+	show_resultats()
 
 func get_segment_result() -> int:
 	var n_segments : int = match_info.roulette_info.r_segments.size()
@@ -135,6 +137,10 @@ func set_match_state(_new_state : int) -> void:
 func save_match():
 	var _saved : bool = Globals.save_load_manager.save_match(match_info)
 	print("Saved: " + str(_saved))
+
+func show_resultats() -> void:
+	report_dialog.update_results_container(match_info)
+	report_dialog.popup_centered()
 
 func show_turn_result() -> void:
 	update_turn_result_dialog()
@@ -265,6 +271,8 @@ func _on_state_popup_menu_index_pressed(index: int) -> void:
 			resume_match()
 		1:
 			start_match()
+		2:
+			show_resultats()
 
 func _on_start_turn_accept_dialog_confirmed() -> void:
 	set_match_state(2)

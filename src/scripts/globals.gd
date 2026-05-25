@@ -7,3 +7,4 @@ var save_load_manager : SaveLoadManager
 var game_editor_scene : GameEditorControl
 var match_scene : MatchScene
 var match_control : MatchControl
+var report_dialog : ReportConfirmDialog
