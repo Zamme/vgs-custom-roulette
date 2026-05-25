@@ -7,10 +7,12 @@ const GAMES_DIRNAME = "games"
 const GAMES_FILES_EXT = ".gam"
 const MATCHES_DIRNAME = "matches"
 const MATCHES_FILES_EXT = ".mat"
-
+const TEMPLATES_DIR = "res://templates"
 
 func _ready() -> void:
 	Globals.save_load_manager = self
+	check_all_dirs()
+	copy_templates()
 
 func check_roulettes_dir():
 	var dir_path : String = USER_PREFIX + ROULETTES_DIRNAME
@@ -21,6 +23,11 @@ func check_roulettes_dir():
 			print("Error: ", _error)
 		else:
 			print("Rouletes dir created succesfully.")
+
+func check_all_dirs() -> void:
+	check_games_dir()
+	check_matches_dir()
+	check_roulettes_dir()
 
 func check_matches_dir():
 	var dir_path : String = USER_PREFIX + MATCHES_DIRNAME
@@ -41,6 +48,45 @@ func check_games_dir():
 			print("Error: ", _error)
 		else:
 			print("Games dir created succesfully.")
+
+func copy_game_templates() -> void:
+	var dest_dir_path : String = USER_PREFIX + GAMES_DIRNAME
+	var _origin_dir_path : String = TEMPLATES_DIR.path_join(GAMES_DIRNAME)
+	var origin_dir = DirAccess.open(_origin_dir_path)
+	if origin_dir:
+		origin_dir.list_dir_begin()
+		var _filename = origin_dir.get_next()
+		
+		while _filename != "":
+			if not origin_dir.current_is_dir() and _filename.ends_with(GAMES_FILES_EXT):
+				var _dest_file_path : String = dest_dir_path.path_join(_filename)
+				if not origin_dir.file_exists(_dest_file_path):
+					origin_dir.copy(_origin_dir_path.path_join(_filename),_dest_file_path )
+			_filename = origin_dir.get_next()
+
+func copy_roulette_templates() -> void:
+	var dest_dir_path : String = USER_PREFIX + ROULETTES_DIRNAME
+	var _origin_dir_path : String = TEMPLATES_DIR.path_join(ROULETTES_DIRNAME)
+	var origin_dir = DirAccess.open(_origin_dir_path)
+	if origin_dir:
+		origin_dir.list_dir_begin()
+		var _filename = origin_dir.get_next()
+		
+		while _filename != "":
+			if not origin_dir.current_is_dir() and _filename.ends_with(ROULETTES_FILES_EXT):
+				var _dest_file_path : String = dest_dir_path.path_join(_filename)
+				if not origin_dir.file_exists(_dest_file_path):
+					origin_dir.copy(_origin_dir_path.path_join(_filename), _dest_file_path)
+			_filename = origin_dir.get_next()
+
+func copy_templates() -> void:
+	var dir = DirAccess.open("user://")
+	var roulettes_dest_dir_path : String = USER_PREFIX + ROULETTES_DIRNAME
+	#if not dir.dir_exists(roulettes_dest_dir_path):
+	copy_roulette_templates()
+	var games_dest_dir_path : String = USER_PREFIX + GAMES_DIRNAME
+	#if not dir.dir_exists(games_dest_dir_path):
+	copy_game_templates()
 
 func exists_roulette_file(_roulette_name : String) -> bool:
 	var _roulette_filepath : String = USER_PREFIX + ROULETTES_DIRNAME.path_join(_roulette_name) + ROULETTES_FILES_EXT

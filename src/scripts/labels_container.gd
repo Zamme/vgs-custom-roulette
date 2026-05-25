@@ -19,7 +19,8 @@ func generar_textos(segmentos):
 		label.text = segmentos[i].s_name if i < segmentos.size() else str(i)
 		label.font_size = 42
 		label.outline_size = 12
-		label.render_priority = 1 # Asegura que se renderice encima de otros objetos
+		label.outline_render_priority = 1
+		label.render_priority = 2 # Asegura que se renderice encima de otros objetos
 		# Importante: para que no se vea a través de las paredes si no quieres
 		label.no_depth_test = false
 		
@@ -34,7 +35,7 @@ func generar_textos(segmentos):
 		var z = sin(angulo) * radio_texto
 		
 		# 0.01 en Y para que esté justo encima del disco y no parpadee (Z-fighting)
-		label.position = Vector3(x, 0.01, z)
+		label.position = Vector3(x, 0.1, z)
 		
 		# 3. Rotación para que esté "acostado" sobre el segmento
 		label.rotation_edit_mode = Node3D.ROTATION_EDIT_MODE_EULER
@@ -49,10 +50,12 @@ func generar_textos_radiales(segmentos, _radio_dev: float = 0.5, mida_font: floa
 	var numero_de_segmentos = segmentos.size()
 	for i in range(numero_de_segmentos):
 		var label = Label3D.new()
-		label.render_priority = 1 # Asegura que se renderice encima de otros objetos
+		label.render_priority = 2 # Asegura que se renderice encima de otros objetos
+		label.outline_render_priority = 1
 		label.font_size = mida_font
-		label.outline_size = 6
+		label.outline_size = int(mida_font/3)
 		label.text = segmentos[i].s_name if i < segmentos.size() else str(i)
+		label.no_depth_test = false
 		
 		# --- CONFIGURACIÓN DE ALINEACIÓN ---
 		# "Left" hace que el inicio de la palabra sea el punto de pivote
