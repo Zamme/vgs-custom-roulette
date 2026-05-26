@@ -2,6 +2,11 @@
 
 [ext_resource type="Script" uid="uid://c54a430yk1mx" path="res://src/scripts/game_manager.gd" id="1_x17l7"]
 [ext_resource type="Script" uid="uid://dex3rmiavftk1" path="res://src/scripts/save_load_manager.gd" id="2_2138g"]
+[ext_resource type="Script" uid="uid://dca6h8yib55ld" path="res://src/scripts/sound_manager.gd" id="3_63v1u"]
+[ext_resource type="AudioStream" uid="uid://cna8sb3lam1sa" path="res://assets/audio/kitchen_ambient_01.mp3" id="4_dj3nd"]
+[ext_resource type="AudioStream" uid="uid://bh32aj4upuv1g" path="res://assets/audio/car_loop.wav" id="5_2ayg4"]
+[ext_resource type="AudioStream" uid="uid://d4g8qp1s2e3yp" path="res://assets/audio/heyy.wav" id="6_4yxi6"]
+[ext_resource type="AudioStream" uid="uid://dbnsuxn3gxynx" path="res://assets/audio/music_01.mp3" id="7_n4oli"]
 
 [node name="GameManager" type="Node" unique_id=1773128760]
 script = ExtResource("1_x17l7")
@@ -9,5 +14,17 @@ script = ExtResource("1_x17l7")
 [node name="SaveLoadManager" type="Node" parent="." unique_id=1601281165]
 script = ExtResource("2_2138g")
 
-[node name="AudioListener3D" type="AudioListener3D" parent="." unique_id=1644465447]
-current = true
+[node name="SoundManager" type="Node" parent="." unique_id=397552703]
+script = ExtResource("3_63v1u")
+
+[node name="AmbientAudio" type="AudioStreamPlayer" parent="SoundManager" unique_id=1279427161]
+stream = ExtResource("4_dj3nd")
+
+[node name="RollingAudio" type="AudioStreamPlayer" parent="SoundManager" unique_id=600194559]
+stream = ExtResource("5_2ayg4")
+
+[node name="HeyAudio" type="AudioStreamPlayer" parent="SoundManager" unique_id=492669192]
+stream = ExtResource("6_4yxi6")
+
+[node name="MusicAudio" type="AudioStreamPlayer" parent="SoundManager" unique_id=1751453788]
+stream = ExtResource("7_n4oli")

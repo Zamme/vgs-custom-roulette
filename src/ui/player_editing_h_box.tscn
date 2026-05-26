@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ufemu51pac3q"]
 
 [ext_resource type="Script" uid="uid://baxhsgalrm235" path="res://src/scripts/player_editing_h_box.gd" id="1_hv1xj"]
+[ext_resource type="FontFile" uid="uid://bdrkor4sy7njn" path="res://assets/fonts/DejaVuSans.ttf" id="2_7qw3j"]
 
 [node name="PlayerEditingHBox" type="HBoxContainer" unique_id=1957268829]
 anchors_preset = 8
@@ -20,26 +21,47 @@ script = ExtResource("1_hv1xj")
 [node name="OrderLabel" type="Label" parent="." unique_id=727111663]
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_7qw3j")
+theme_override_font_sizes/font_size = 25
 text = "0"
 
 [node name="NomJugadorLineEdit" type="LineEdit" parent="." unique_id=483147713]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_7qw3j")
+theme_override_font_sizes/font_size = 26
 placeholder_text = "Nom Jugador"
 
 [node name="UpButton" type="Button" parent="." unique_id=378178007]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_7qw3j")
+theme_override_font_sizes/font_size = 20
 text = "up"
 
 [node name="DownButton" type="Button" parent="." unique_id=983619595]
 layout_mode = 2
 size_flags_horizontal = 8
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_7qw3j")
+theme_override_font_sizes/font_size = 20
 text = "down"
 
 [node name="DeleteButton" type="Button" parent="." unique_id=461133505]
 layout_mode = 2
 size_flags_horizontal = 8
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_7qw3j")
+theme_override_font_sizes/font_size = 20
 text = "delete"
 
 [connection signal="editing_toggled" from="NomJugadorLineEdit" to="." method="_on_nom_jugador_line_edit_editing_toggled"]

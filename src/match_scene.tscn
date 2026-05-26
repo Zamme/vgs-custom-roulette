@@ -7,15 +7,15 @@
 [ext_resource type="PackedScene" uid="uid://cx4ospfuoteyv" path="res://src/ui/match_player_v_box_container.tscn" id="3_s4p1r"]
 [ext_resource type="Texture2D" uid="uid://cek0niwhg1pw" path="res://assets/textures/taula_fusta_orm.png" id="3_y5sdm"]
 [ext_resource type="Script" uid="uid://cbraaod2783xm" path="res://src/scripts/match_roulette.gd" id="4_3ntpd"]
+[ext_resource type="StyleBox" uid="uid://mul8mp4diwtm" path="res://src/styles/top_menu_button_normal_style_box_flat.tres" id="4_ab0bp"]
 [ext_resource type="PackedScene" uid="uid://bdwbwjk4tymch" path="res://src/roulette/roulette_01.tscn" id="4_y5sdm"]
+[ext_resource type="StyleBox" uid="uid://dlj4ihxby7bso" path="res://src/styles/top_menu_button_selected_style_box_flat.tres" id="5_hpdgp"]
 [ext_resource type="Script" uid="uid://yvlflm4rxxpx" path="res://src/scripts/report_confirm_dialog.gd" id="6_06v7e"]
 [ext_resource type="Script" uid="uid://cyv8okel0e4x0" path="res://src/scripts/go_button.gd" id="6_jl3iu"]
+[ext_resource type="StyleBox" uid="uid://d1jkau7a18oan" path="res://src/styles/floating_menus_style_box_flat.tres" id="6_ob5my"]
 [ext_resource type="PackedScene" uid="uid://c0hs534mh4ww6" path="res://src/ui/report_result_h_box_container.tscn" id="7_ob5my"]
+[ext_resource type="Theme" uid="uid://cbb1prdlpxwa2" path="res://src/styles/popups_theme.tres" id="8_06v7e"]
 [ext_resource type="PackedScene" uid="uid://b1tsrrd2rge6u" path="res://src/other/arrow_01.tscn" id="10_an4x1"]
-[ext_resource type="AudioStream" uid="uid://cna8sb3lam1sa" path="res://assets/audio/kitchen_ambient_01.mp3" id="12_h1ovk"]
-[ext_resource type="AudioStream" uid="uid://bh32aj4upuv1g" path="res://assets/audio/car_loop.wav" id="13_drlgp"]
-[ext_resource type="AudioStream" uid="uid://d4g8qp1s2e3yp" path="res://assets/audio/heyy.wav" id="14_84jov"]
-[ext_resource type="AudioStream" uid="uid://dbnsuxn3gxynx" path="res://assets/audio/music_01.mp3" id="15_ab0bp"]
 [ext_resource type="PackedScene" uid="uid://o0lwda8m7o4f" path="res://src/other/Fork.tscn" id="16_hpdgp"]
 [ext_resource type="PackedScene" uid="uid://dinq5j31fgrw" path="res://src/other/KitchenKnife.tscn" id="17_06v7e"]
 
@@ -78,14 +78,30 @@ layout_mode = 2
 [node name="MatchMenu" type="MenuBar" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer" unique_id=732309442]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
 theme_override_constants/outline_size = 2
 theme_override_constants/h_separation = 5
 theme_override_fonts/font = ExtResource("2_7meom")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = ExtResource("4_ab0bp")
+theme_override_styles/pressed = ExtResource("5_hpdgp")
+theme_override_styles/hover = ExtResource("5_hpdgp")
+theme_override_styles/hover_pressed = ExtResource("5_hpdgp")
 
 [node name="MatchPopupMenu" type="PopupMenu" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/MatchMenu" unique_id=1138947218]
+oversampling_override = 1.0
 title = "Match"
+size = Vector2i(162, 240)
+sharp_corners = true
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.21568628, 0.21568628, 0.21568628, 0.8745098)
+theme_override_colors/font_hover_color = Color(6.3051284e-06, 0.74943346, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/v_separation = 25
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_7meom")
+theme_override_font_sizes/font_size = 28
 item_count = 4
 item_0/text = "Nou"
 item_0/id = 0
@@ -97,7 +113,17 @@ item_3/text = "Sortir"
 item_3/id = 3
 
 [node name="MatchPropertiesPopupMenu" type="PopupMenu" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/MatchMenu" unique_id=145529627]
+oversampling_override = 1.0
 title = "Config"
+size = Vector2i(198, 100)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.6651851, 0.6651851, 0.6651851, 0.8)
+theme_override_colors/font_hover_color = Color(1.3957918e-05, 0.93292207, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/v_separation = 25
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_7meom")
+theme_override_font_sizes/font_size = 28
 item_count = 2
 item_0/text = "Load Saved Roulette"
 item_0/id = 0
@@ -105,7 +131,17 @@ item_1/text = "Load Saved Game"
 item_1/id = 1
 
 [node name="StatePopupMenu" type="PopupMenu" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/MatchMenu" unique_id=1313492497]
+oversampling_override = 1.0
 title = "Play"
+size = Vector2i(112, 100)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.6651851, 0.6651851, 0.6651851, 0.8)
+theme_override_colors/font_hover_color = Color(1.3957918e-05, 0.93292207, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/v_separation = 25
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_7meom")
+theme_override_font_sizes/font_size = 28
 item_count = 3
 item_0/text = "Resume"
 item_0/id = 0
@@ -118,13 +154,13 @@ item_2/id = 2
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 8
-size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("6_ob5my")
 
 [node name="MarginContainer" type="MarginContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer" unique_id=1009724244]
 layout_mode = 2
-theme_override_constants/margin_left = 10
+theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
+theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer" unique_id=288010673]
@@ -135,11 +171,24 @@ theme_override_constants/separation = 15
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1389581213]
+visible = false
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_7meom")
+theme_override_font_sizes/font_size = 26
 text = "Match Name"
 
 [node name="MatchNameLineEdit" type="LineEdit" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=98406326]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_7meom")
+theme_override_font_sizes/font_size = 24
+placeholder_text = "Match Name"
+alignment = 1
 
 [node name="PlayersMainVBoxContainer" type="VBoxContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1786724268]
 layout_mode = 2
@@ -160,7 +209,14 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/PlayersMainVBoxContainer/MarginContainer/PanelContainer/VBoxContainer" unique_id=1830166210]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_7meom")
+theme_override_font_sizes/font_size = 24
 text = "Players"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MatchControl/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/PlayersMainVBoxContainer/MarginContainer/PanelContainer/VBoxContainer" unique_id=1254029588]
 custom_minimum_size = Vector2(0, 460)
@@ -212,6 +268,7 @@ expand_icon = true
 script = ExtResource("6_jl3iu")
 
 [node name="LoadMatchFileDialog" type="FileDialog" parent="MatchControl" unique_id=725353982]
+oversampling_override = 1.0
 title = "Open a File"
 initial_position = 1
 dialog_hide_on_ok = true
@@ -223,6 +280,7 @@ overwrite_warning_enabled = false
 deleting_enabled = false
 
 [node name="LoadGameFileDialog" type="FileDialog" parent="MatchControl" unique_id=1436463160]
+oversampling_override = 1.0
 title = "Open a File"
 initial_position = 1
 dialog_hide_on_ok = true
@@ -245,6 +303,7 @@ overwrite_warning_enabled = false
 deleting_enabled = false
 
 [node name="SaveMatchFileDialog" type="FileDialog" parent="MatchControl" unique_id=1479406040]
+oversampling_override = 1.0
 initial_position = 1
 dialog_hide_on_ok = true
 access = 1
@@ -253,40 +312,47 @@ deleting_enabled = false
 
 [node name="StartTurnAcceptDialog" type="AcceptDialog" parent="MatchControl" unique_id=738656350]
 oversampling_override = 1.0
-title = "Inici Jugada"
+title = ""
 initial_position = 1
-size = Vector2i(250, 181)
+size = Vector2i(400, 200)
+visible = true
 content_scale_aspect = 4
-theme_override_constants/buttons_separation = 59
-dialog_text = "Torn jugada aaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+theme = ExtResource("8_06v7e")
+theme_override_constants/buttons_separation = 60
+dialog_text = "Torn jugada aaaaaaaaaaaaaaaaaaa"
 dialog_autowrap = true
 
 [node name="TurnResultConfirmDialog" type="ConfirmationDialog" parent="MatchControl" unique_id=1487113619]
 oversampling_override = 1.0
-title = "Resultat"
+title = ""
 initial_position = 1
-size = Vector2i(300, 207)
+size = Vector2i(400, 300)
 content_scale_aspect = 4
+theme = ExtResource("8_06v7e")
 dialog_autowrap = true
 cancel_button_text = "Repetir"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MatchControl/TurnResultConfirmDialog" unique_id=1587556727]
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 292.0
-offset_bottom = 158.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 390.0
+offset_bottom = 243.0
+alignment = 1
 
 [node name="PlayerResultTitleLabel" type="Label" parent="MatchControl/TurnResultConfirmDialog/VBoxContainer" unique_id=553779008]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_7meom")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 26
 text = "Resultat:"
 
 [node name="PlayerResultLabel" type="Label" parent="MatchControl/TurnResultConfirmDialog/VBoxContainer" unique_id=1363386631]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("2_7meom")
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 36
 text = "Joan"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -307,8 +373,8 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("2_7meom")
-theme_override_font_sizes/font_size = 21
-text = "Catalunyaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+theme_override_font_sizes/font_size = 36
+text = "Catalunyaaaaa"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -366,18 +432,6 @@ shape = SubResource("CylinderShape3D_3ntpd")
 
 [node name="arrow_01" parent="." unique_id=2044049041 instance=ExtResource("10_an4x1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28, 0)
-
-[node name="AmbientAudio" type="AudioStreamPlayer" parent="." unique_id=940406743]
-stream = ExtResource("12_h1ovk")
-
-[node name="RollingAudio" type="AudioStreamPlayer" parent="." unique_id=1837605348]
-stream = ExtResource("13_drlgp")
-
-[node name="HeyAudio" type="AudioStreamPlayer" parent="." unique_id=784436086]
-stream = ExtResource("14_84jov")
-
-[node name="MusicAudio" type="AudioStreamPlayer" parent="." unique_id=1418999866]
-stream = ExtResource("15_ab0bp")
 
 [node name="Fork" parent="." unique_id=1152937941 instance=ExtResource("16_hpdgp")]
 transform = Transform3D(0.205, 0, 0, 0, 0.205, 0, 0, 0, 0.205, -1.8749667, 0.065, 0)

@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/kitchen_ambient_01.mp3-caf0f0ef2bb68976417cc6
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

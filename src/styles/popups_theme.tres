@@ -1,0 +1,25 @@
+[gd_resource type="Theme" format=3 uid="uid://cbb1prdlpxwa2"]
+
+[ext_resource type="FontFile" uid="uid://bdrkor4sy7njn" path="res://assets/fonts/DejaVuSans.ttf" id="1_a26ny"]
+[ext_resource type="StyleBox" uid="uid://dst8lbqrkowlf" path="res://src/styles/popup_bg_style_box_flat.tres" id="2_o1aje"]
+[ext_resource type="StyleBox" uid="uid://bga8oeatro422" path="res://src/styles/popup_accept_style_box_flat.tres" id="2_s6tp2"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_s6tp2"]
+
+[resource]
+default_font = ExtResource("1_a26ny")
+AcceptDialog/colors/title_color = Color(1, 1, 1, 1)
+AcceptDialog/colors/title_outline_modulate = Color(0, 0, 0, 1)
+AcceptDialog/font_sizes/title_font_size = 36
+AcceptDialog/fonts/title_font = ExtResource("1_a26ny")
+AcceptDialog/icons/close = SubResource("ImageTexture_s6tp2")
+AcceptDialog/styles/embedded_border = ExtResource("2_s6tp2")
+AcceptDialog/styles/embedded_unfocused_border = null
+AcceptDialog/styles/panel = ExtResource("2_o1aje")
+Button/font_sizes/font_size = 24
+Button/fonts/font = ExtResource("1_a26ny")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 1
+Label/font_sizes/font_size = 30
+Label/fonts/font = ExtResource("1_a26ny")

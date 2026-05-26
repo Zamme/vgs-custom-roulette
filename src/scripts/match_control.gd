@@ -26,6 +26,8 @@ func update_players_list() -> void:
 	var _current_match_info : MatchInfo = Globals.match_scene.match_info
 	var _players : Array = Globals.match_scene.match_info.game_info.g_players
 	for i_player in _players.size():
+		var _new_sep : HSeparator = HSeparator.new()
+		players_vbox_container.add_child(_new_sep)
 		var _new_mpvbox : MatchPlayerVBox = match_player_vbox_prefab.instantiate()
 		players_vbox_container.add_child(_new_mpvbox)
 		_new_mpvbox.set_player_name_label(_players[i_player].p_name)
@@ -43,6 +45,8 @@ func update_players_list() -> void:
 			pass
 		else:
 			_new_mpvbox.set_result_color_rect(Color.GRAY)
+	var _new_sep : HSeparator = HSeparator.new()
+	players_vbox_container.add_child(_new_sep)
 
 func _on_match_name_line_edit_editing_toggled(toggled_on: bool) -> void:
 	if not toggled_on:

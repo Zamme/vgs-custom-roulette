@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://coiv3r6b48is8" path="res://assets/textures/taula_fusta_albedo.png" id="2_gq8xa"]
 [ext_resource type="Script" uid="uid://dnq2qg8vi7qb2" path="res://src/scripts/crear_ruleta_button.gd" id="3_michw"]
 [ext_resource type="StyleBox" uid="uid://cq0hs5hvn3dju" path="res://src/styles/mainmenu_button_style_box_flat.tres" id="4_6da72"]
-[ext_resource type="AudioStream" uid="uid://dbnsuxn3gxynx" path="res://assets/audio/music_01.mp3" id="4_sbeu1"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6da72"]
 texture = ExtResource("2_gq8xa")
@@ -44,11 +43,14 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.9247064, 0.62150097, 0.5336326, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8235294)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 3
-theme_override_constants/shadow_outline_size = 2
+theme_override_constants/shadow_outline_size = 5
 theme_override_fonts/font = ExtResource("1_tayro")
-theme_override_font_sizes/font_size = 75
+theme_override_font_sizes/font_size = 90
 text = "Roulette Maker"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -63,9 +65,9 @@ theme_override_constants/separation = 56
 layout_mode = 2
 theme_override_colors/font_color = Color(2.887845e-06, 0.8799262, 0.9887685, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 2
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("1_tayro")
-theme_override_font_sizes/font_size = 45
+theme_override_font_sizes/font_size = 46
 theme_override_styles/normal = ExtResource("4_6da72")
 theme_override_styles/pressed = ExtResource("4_6da72")
 theme_override_styles/hover = ExtResource("4_6da72")
@@ -78,9 +80,9 @@ script = ExtResource("3_michw")
 layout_mode = 2
 theme_override_colors/font_color = Color(2.887845e-06, 0.8799262, 0.9887685, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 1
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("1_tayro")
-theme_override_font_sizes/font_size = 45
+theme_override_font_sizes/font_size = 46
 theme_override_styles/normal = ExtResource("4_6da72")
 theme_override_styles/pressed = ExtResource("4_6da72")
 theme_override_styles/hover = ExtResource("4_6da72")
@@ -93,9 +95,9 @@ script = ExtResource("3_michw")
 layout_mode = 2
 theme_override_colors/font_color = Color(2.887845e-06, 0.8799262, 0.9887685, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 1
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("1_tayro")
-theme_override_font_sizes/font_size = 45
+theme_override_font_sizes/font_size = 46
 theme_override_styles/normal = ExtResource("4_6da72")
 theme_override_styles/pressed = ExtResource("4_6da72")
 theme_override_styles/hover = ExtResource("4_6da72")
@@ -106,17 +108,17 @@ script = ExtResource("3_michw")
 
 [node name="ByLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1902142316]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7411765)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("1_tayro")
 theme_override_font_sizes/font_size = 28
 text = "By Jaume Castells Carles for Vilo Games Studio"
 horizontal_alignment = 2
 vertical_alignment = 1
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1147313146]
-stream = ExtResource("4_sbeu1")
-autoplay = true
 
 [connection signal="button_up" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/EditorRuletaButton" to="." method="_on_crear_ruleta_button_button_up"]
 [connection signal="button_up" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/EditorJocsButton" to="." method="_on_editor_jocs_button_button_up"]

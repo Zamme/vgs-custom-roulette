@@ -3,11 +3,11 @@ extends Node3D
 
 @onready var roulette_scene : Node3D = %roulette_01
 @onready var segments_props_vbox : VBoxContainer = %SegmentsPropsVBoxContainer
-@onready var nom_line_edit : LineEdit = $EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer3/NomLineEdit
-@onready var descripcio_line_edit : LineEdit = $EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer4/DescripcioLineEdit
-@onready var segments_spinbox : SpinBox = $EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer/SegmentsSpinBox
-@onready var radiodev_spinbox : SpinBox = $EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer2/RadioDevSpinBox
-@onready var fontsize_spinbox : SpinBox = $EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer5/MidaFontSpinBox
+@onready var nom_line_edit : LineEdit = $EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3/NomLineEdit
+@onready var descripcio_line_edit : LineEdit = $EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer4/DescripcioLineEdit
+@onready var segments_spinbox : SpinBox = $EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/SegmentsSpinBox
+@onready var radiodev_spinbox : SpinBox = $EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2/RadioDevSpinBox
+@onready var fontsize_spinbox : SpinBox = $EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer5/MidaFontSpinBox
 @onready var load_roulette_popup : FileDialog = $EditorUIControl/LoadRoulettePopup
 @onready var save_confirmation_dialog : ConfirmationDialog = $EditorUIControl/SaveConfirmationDialog
 @onready var new_confirmation_dialog : ConfirmationDialog = $EditorUIControl/NewConfirmationDialog
@@ -19,7 +19,7 @@ var roulette_info_default: RouletteInfo = RouletteInfo.new("New Roulette", "This
 
 var roulette_info : RouletteInfo
 
-var segment_props_vbox_container : PackedScene = preload("res://src/editor/segment_props_v_box_container.tscn")
+var segment_props_container : PackedScene = preload("res://src/editor/segment_props_container.tscn")
 var labels_container_packedscene : PackedScene = preload("res://src/editor/labels_container.tscn")
 var labels_container_instance : Node = null
 
@@ -76,11 +76,11 @@ func update_roulette_segments(new_segments: Array) -> void:
 func update_segments_properties() -> void:
 	clean_vbox_children(segments_props_vbox)
 	for i in range(roulette_info.r_segments.size()):
-		var new_segment_props_vbox = segment_props_vbox_container.instantiate()
-		new_segment_props_vbox.get_node("SegmentNameLineEdit").text = roulette_info.r_segments[i].s_name
-		new_segment_props_vbox.get_node("SegmentColorPickerButton").color = roulette_info.r_segments[i].s_color
-		new_segment_props_vbox.segment_n = i
-		segments_props_vbox.add_child(new_segment_props_vbox)
+		var new_segment_props_container = segment_props_container.instantiate()
+		segments_props_vbox.add_child(new_segment_props_container)
+		new_segment_props_container.segment_lineedit.text = roulette_info.r_segments[i].s_name
+		new_segment_props_container.segment_color.color = roulette_info.r_segments[i].s_color
+		new_segment_props_container.segment_n = i
 
 func _on_segments_spin_box_value_changed(value: float) -> void:
 	print("Segments Spin Box Value Changed: ", value)

@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://doxobflsi0n0h"]
+
+[ext_resource type="FontFile" uid="uid://bdrkor4sy7njn" path="res://assets/fonts/DejaVuSans.ttf" id="1_walhc"]
+
+[resource]
+default_font = ExtResource("1_walhc")
+default_font_size = 26

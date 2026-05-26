@@ -10,10 +10,6 @@ const default_damp : float = 0.5
 @onready var load_match_popup : FileDialog = $MatchControl/LoadMatchFileDialog
 @onready var start_turn_dialog : AcceptDialog = $MatchControl/StartTurnAcceptDialog
 @onready var turn_result_dialog : AcceptDialog = $MatchControl/TurnResultConfirmDialog
-@onready var ambient_audio : AudioStreamPlayer = $AmbientAudio
-@onready var rolling_audio : AudioStreamPlayer = $RollingAudio
-@onready var hey_audio : AudioStreamPlayer = $HeyAudio
-@onready var music_audio : AudioStreamPlayer = $MusicAudio
 @onready var go_button : GoButton = $MatchControl/GOButton
 @onready var match_popup_menu : PopupMenu = $MatchControl/PanelContainer/MarginContainer/VBoxContainer/MatchMenu/MatchPopupMenu
 @onready var match_properties_popup_menu : PopupMenu = $MatchControl/PanelContainer/MarginContainer/VBoxContainer/MatchMenu/MatchPropertiesPopupMenu
@@ -79,10 +75,10 @@ func get_segment_result() -> int:
 
 func go_roulette() -> void:
 	is_roulette_rolling = true
-	play_ambient_audio(false)
-	play_music_audio(false)
-	if not(rolling_audio.playing):
-		play_rolling_audio(true)
+	Globals.sound_manager.play_ambient_audio(false)
+	Globals.sound_manager.play_music_audio(false)
+	if not(Globals.sound_manager.rolling_audio.playing):
+		Globals.sound_manager.play_rolling_audio(true)
 	roulette_rb.angular_velocity = default_rotation_velocity
 
 func load_game(_game_name : String) -> void:
@@ -110,22 +106,13 @@ func has_next_turn() -> bool:
 	_has_next = not(match_info.match_turn >= match_info.game_info.g_players.size())
 	return _has_next
 
-func play_ambient_audio(_play : bool) -> void:
-	ambient_audio.playing = _play
-
-func play_music_audio(_play : bool) -> void:
-	music_audio.playing = _play
-
-func play_rolling_audio(_play : bool) -> void:
-	rolling_audio.playing = _play
-
 func resume_match() -> void:
 	start_turn()
 
 func roulette_stopped():
 	is_roulette_rolling = false
-	play_rolling_audio(false)
-	hey_audio.play()
+	Globals.sound_manager.play_rolling_audio(false)
+	Globals.sound_manager.play_hey_audio()
 	check_roulette_result()
 	Globals.match_control.update_all()
 	show_turn_result()
@@ -153,6 +140,8 @@ func start_match() -> void:
 	resume_match()
 
 func start_turn() -> void:
+	Globals.sound_manager.play_ambient_audio(true)
+	Globals.sound_manager.play_music_audio(false)
 	update_start_turn_dialog()
 	start_turn_dialog.popup_centered()
 

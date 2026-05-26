@@ -35,16 +35,25 @@ func load_main_menu() -> void:
 	unload_current_scene()
 	current_scene = load(MAIN_MENU_SCENE_PATH).instantiate()
 	add_child(current_scene)
+	Globals.sound_manager.play_music_audio(true)
+	Globals.sound_manager.play_ambient_audio(false)
+	Globals.sound_manager.play_rolling_audio(false)
 
 func load_match_scene() -> void:
 	unload_current_scene()
 	current_scene = load(MATCH_SCENE_PATH).instantiate()
 	add_child(current_scene)
+	Globals.sound_manager.play_music_audio(true)
+	Globals.sound_manager.play_ambient_audio(true)
+	Globals.sound_manager.play_rolling_audio(false)
 
 func load_roulette_editor() -> void:
 	unload_current_scene()
 	current_scene = load(ROULETTE_EDITOR_SCENE_PATH).instantiate()
 	add_child(current_scene)
+	Globals.sound_manager.play_music_audio(true)
+	Globals.sound_manager.play_ambient_audio(false)
+	Globals.sound_manager.play_rolling_audio(false)
 
 func unload_current_scene() -> void:
 	if current_scene:

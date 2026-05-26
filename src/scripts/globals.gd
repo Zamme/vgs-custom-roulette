@@ -2,7 +2,8 @@ extends Node
 
 var roulete_editor_scene : RouletteEditor
 var game_manager : GameManager
-var main_menu
+var sound_manager : SoundManager
+var main_menu : RM_MainMenu_Control
 var save_load_manager : SaveLoadManager
 var game_editor_scene : GameEditorControl
 var match_scene : MatchScene

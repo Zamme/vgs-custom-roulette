@@ -1,8 +1,8 @@
-extends VBoxContainer
+class_name SegmentPropsPanelContainer extends PanelContainer
 
 
-@onready var segment_lineedit : LineEdit = $SegmentNameLineEdit
-@onready var segment_color : ColorPickerButton = $SegmentColorPickerButton
+@onready var segment_lineedit : LineEdit = $MarginContainer/SegmentPropsVBoxContainer/SegmentNameLineEdit
+@onready var segment_color : ColorPickerButton = $MarginContainer/SegmentPropsVBoxContainer/SegmentColorPickerButton
 
 var segment_n : int = 0
 

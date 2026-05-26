@@ -2,6 +2,20 @@
 
 [ext_resource type="Script" uid="uid://ct67q4gpa3ctj" path="res://src/scripts/game_editor_control.gd" id="1_k0fq7"]
 [ext_resource type="PackedScene" uid="uid://ufemu51pac3q" path="res://src/ui/player_editing_h_box.tscn" id="2_0k16j"]
+[ext_resource type="Texture2D" uid="uid://coiv3r6b48is8" path="res://assets/textures/taula_fusta_albedo.png" id="2_hypqg"]
+[ext_resource type="FontFile" uid="uid://bdrkor4sy7njn" path="res://assets/fonts/DejaVuSans.ttf" id="3_15ita"]
+[ext_resource type="StyleBox" uid="uid://mul8mp4diwtm" path="res://src/styles/top_menu_button_normal_style_box_flat.tres" id="4_okdca"]
+[ext_resource type="StyleBox" uid="uid://dlj4ihxby7bso" path="res://src/styles/top_menu_button_selected_style_box_flat.tres" id="5_k3y8y"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jy3ot"]
+texture = ExtResource("2_hypqg")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hypqg"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.3647059, 0.3647059, 0.3647059, 0.5058824)
 
 [node name="GameEditorControl" type="Control" unique_id=410234741]
 layout_mode = 3
@@ -19,6 +33,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_jy3ot")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=786776896]
 layout_mode = 2
@@ -34,8 +49,25 @@ theme_override_constants/separation = 22
 [node name="MenuBar" type="MenuBar" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=242865518]
 layout_mode = 2
 size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_15ita")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = ExtResource("4_okdca")
+theme_override_styles/pressed = ExtResource("5_k3y8y")
+theme_override_styles/hover = ExtResource("5_k3y8y")
+theme_override_styles/hover_pressed = ExtResource("5_k3y8y")
 
 [node name="OptionsMenu" type="PopupMenu" parent="PanelContainer/MarginContainer/VBoxContainer/MenuBar" unique_id=236784791]
+oversampling_override = 1.0
+title = "Game"
+size = Vector2i(202, 252)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(5.77569e-06, 0.818051, 3.85046e-07, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/v_separation = 25
+theme_override_fonts/font = ExtResource("3_15ita")
+theme_override_font_sizes/font_size = 30
 item_count = 4
 item_0/text = "Nou"
 item_0/id = 0
@@ -51,11 +83,20 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=917394359]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_15ita")
+theme_override_font_sizes/font_size = 30
 text = "Nom"
 
 [node name="NomJocLineEdit" type="LineEdit" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=160077690]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_15ita")
+theme_override_font_sizes/font_size = 30
 placeholder_text = "nom joc"
 structured_text_bidi_override = 2
 
@@ -64,11 +105,20 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1509886399]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_15ita")
+theme_override_font_sizes/font_size = 30
 text = "Descripcio"
 
 [node name="DescripcioJocLineEdit" type="LineEdit" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=258801754]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_15ita")
+theme_override_font_sizes/font_size = 30
 placeholder_text = "descripcio joc"
 
 [node name="vBoxContainer3" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1271355097]
@@ -79,12 +129,18 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_15ita")
+theme_override_font_sizes/font_size = 30
 text = "Jugadors"
 
 [node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/vBoxContainer3" unique_id=525587007]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_hypqg")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/vBoxContainer3/PanelContainer" unique_id=2084034366]
 layout_mode = 2
@@ -103,6 +159,10 @@ layout_mode = 2
 [node name="AddPlayerButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/vBoxContainer3/PanelContainer/VBoxContainer" unique_id=1118858946]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_15ita")
+theme_override_font_sizes/font_size = 26
 text = "Afegir jugador"
 
 [node name="NewConfirmationDialog" type="ConfirmationDialog" parent="." unique_id=1411183512]
