@@ -25,6 +25,10 @@ Globals="*uid://6uyxvyya2jwh"
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
+[editor]
+
+script/search_in_file_extensions=PackedStringArray("gd", "gdshader", "rul", "gam")
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

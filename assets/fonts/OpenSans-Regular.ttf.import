@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bc3lpqtuhq4h2"
-path="res://.godot/imported/Dawn-Regular.ttf-609f34b4e7b4de63a3fa5acf0b4891a1.fontdata"
+uid="uid://dqqb0redks8e2"
+path="res://.godot/imported/OpenSans-Regular.ttf-f1a47963f56982f49f7a951c7c7cd35f.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/Dawn-Regular.ttf"
-dest_files=["res://.godot/imported/Dawn-Regular.ttf-609f34b4e7b4de63a3fa5acf0b4891a1.fontdata"]
+source_file="res://assets/fonts/OpenSans-Regular.ttf"
+dest_files=["res://.godot/imported/OpenSans-Regular.ttf-f1a47963f56982f49f7a951c7c7cd35f.fontdata"]
 
 [params]
 

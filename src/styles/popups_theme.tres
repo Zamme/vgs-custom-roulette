@@ -1,8 +1,8 @@
 [gd_resource type="Theme" format=3 uid="uid://cbb1prdlpxwa2"]
 
 [ext_resource type="FontFile" uid="uid://bdrkor4sy7njn" path="res://assets/fonts/DejaVuSans.ttf" id="1_a26ny"]
-[ext_resource type="StyleBox" uid="uid://dst8lbqrkowlf" path="res://src/styles/popup_bg_style_box_flat.tres" id="2_o1aje"]
-[ext_resource type="StyleBox" uid="uid://bga8oeatro422" path="res://src/styles/popup_accept_style_box_flat.tres" id="2_s6tp2"]
+[ext_resource type="StyleBox" uid="uid://y0vju0bu2nrr" path="res://src/styles/resultats_border_style_box_flat.tres" id="2_s6tp2"]
+[ext_resource type="StyleBox" uid="uid://dhh2pj33e85nc" path="res://src/styles/results_panel_style_box_flat.tres" id="3_yubnf"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_s6tp2"]
 
@@ -15,7 +15,7 @@ AcceptDialog/fonts/title_font = ExtResource("1_a26ny")
 AcceptDialog/icons/close = SubResource("ImageTexture_s6tp2")
 AcceptDialog/styles/embedded_border = ExtResource("2_s6tp2")
 AcceptDialog/styles/embedded_unfocused_border = null
-AcceptDialog/styles/panel = ExtResource("2_o1aje")
+AcceptDialog/styles/panel = ExtResource("3_yubnf")
 Button/font_sizes/font_size = 24
 Button/fonts/font = ExtResource("1_a26ny")
 Label/colors/font_color = Color(1, 1, 1, 1)

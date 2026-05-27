@@ -7,8 +7,11 @@
 [ext_resource type="FontFile" uid="uid://bdrkor4sy7njn" path="res://assets/fonts/DejaVuSans.ttf" id="4_1408v"]
 [ext_resource type="Theme" uid="uid://doxobflsi0n0h" path="res://src/styles/spins_theme.tres" id="5_8twac"]
 [ext_resource type="StyleBox" uid="uid://d1jkau7a18oan" path="res://src/styles/floating_menus_style_box_flat.tres" id="5_p6mfb"]
+[ext_resource type="StyleBox" uid="uid://dlj4ihxby7bso" path="res://src/styles/top_menu_button_selected_style_box_flat.tres" id="5_xuble"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8twac"]
+content_margin_left = 10.0
+content_margin_right = 10.0
 texture = ExtResource("2_1f188")
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nacxe"]
@@ -43,31 +46,36 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_8twac")
 
 [node name="MarginContainer" type="MarginContainer" parent="EditorUIControl/PanelContainer" unique_id=455231613]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="EditorUIControl/PanelContainer/MarginContainer" unique_id=1475685865]
+[node name="VBoxContainer" type="VBoxContainer" parent="EditorUIControl/PanelContainer" unique_id=1475685865]
 layout_mode = 2
 
-[node name="MenuBar" type="MenuBar" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer" unique_id=647678339]
+[node name="MenuBar" type="MenuBar" parent="EditorUIControl/PanelContainer/VBoxContainer" unique_id=647678339]
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("4_1408v")
 theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = ExtResource("2_1408v")
+theme_override_styles/pressed = ExtResource("5_xuble")
+theme_override_styles/hover = ExtResource("5_xuble")
+theme_override_styles/hover_pressed = ExtResource("5_xuble")
 
-[node name="OpcionsMenu" type="PopupMenu" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/MenuBar" unique_id=1672546400]
+[node name="OpcionsMenu" type="PopupMenu" parent="EditorUIControl/PanelContainer/VBoxContainer/MenuBar" unique_id=1672546400]
 oversampling_override = 1.0
 title = "Roulette"
 size = Vector2i(183, 276)
 theme_override_constants/v_separation = 28
 theme_override_fonts/font = ExtResource("4_1408v")
 theme_override_font_sizes/font_size = 30
-theme_override_styles/panel = ExtResource("2_1408v")
 item_count = 4
 item_0/text = "Nova"
 item_0/id = 0
@@ -78,30 +86,31 @@ item_2/id = 2
 item_3/text = "Sortir"
 item_3/id = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer" unique_id=1234838037]
+[node name="HBoxContainer" type="HBoxContainer" parent="EditorUIControl/PanelContainer/VBoxContainer" unique_id=1234838037]
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="PanelContainer" type="PanelContainer" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=455706494]
+[node name="PanelContainer" type="PanelContainer" parent="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer" unique_id=455706494]
 layout_mode = 2
 theme_override_styles/panel = ExtResource("5_p6mfb")
 
-[node name="MarginContainer" type="MarginContainer" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer" unique_id=1886224381]
+[node name="MarginContainer" type="MarginContainer" parent="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer" unique_id=1886224381]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer" unique_id=896095194]
+[node name="VBoxContainer" type="VBoxContainer" parent="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer" unique_id=896095194]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 2
-theme_override_constants/separation = 31
+theme_override_constants/separation = 5
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1255942207]
+[node name="VBoxContainer3" type="VBoxContainer" parent="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1255942207]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3" unique_id=1427882003]
+[node name="Label" type="Label" parent="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3" unique_id=1427882003]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -110,16 +119,16 @@ theme_override_fonts/font = ExtResource("4_1408v")
 theme_override_font_sizes/font_size = 26
 text = "Nom"
 
-[node name="NomLineEdit" type="LineEdit" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3" unique_id=761157106]
+[node name="NomLineEdit" type="LineEdit" parent="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3" unique_id=761157106]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_1408v")
 theme_override_font_sizes/font_size = 26
 placeholder_text = "Nom Ruleta"
 
-[node name="VBoxContainer4" type="VBoxContainer" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=946325820]
+[node name="VBoxContainer4" type="VBoxContainer" parent="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=946325820]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer4" unique_id=1861751669]
+[node name="Label" type="Label" parent="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer4" unique_id=1861751669]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -128,7 +137,7 @@ theme_override_fonts/font = ExtResource("4_1408v")
 theme_override_font_sizes/font_size = 26
 text = "Descripcio"
 
-[node name="DescripcioLineEdit" type="LineEdit" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer4" unique_id=397250682]
+[node name="DescripcioLineEdit" type="LineEdit" parent="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer4" unique_id=397250682]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -137,10 +146,10 @@ theme_override_fonts/font = ExtResource("4_1408v")
 theme_override_font_sizes/font_size = 26
 placeholder_text = "Descripcio"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=130970307]
+[node name="VBoxContainer" type="VBoxContainer" parent="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=130970307]
 layout_mode = 2
 
-[node name="SegmentsLabel" type="Label" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1683757879]
+[node name="SegmentsLabel" type="Label" parent="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1683757879]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -149,7 +158,7 @@ theme_override_fonts/font = ExtResource("4_1408v")
 theme_override_font_sizes/font_size = 26
 text = "Segments"
 
-[node name="SegmentsSpinBox" type="SpinBox" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=117726658]
+[node name="SegmentsSpinBox" type="SpinBox" parent="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=117726658]
 layout_mode = 2
 theme = ExtResource("5_8twac")
 min_value = 2.0
@@ -157,10 +166,10 @@ max_value = 64.0
 value = 3.0
 rounded = true
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=324838007]
+[node name="VBoxContainer2" type="VBoxContainer" parent="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=324838007]
 layout_mode = 2
 
-[node name="RadioDev" type="Label" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=1574524145]
+[node name="RadioDev" type="Label" parent="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=1574524145]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -168,7 +177,7 @@ theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 26
 text = "Radio Dev"
 
-[node name="RadioDevSpinBox" type="SpinBox" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=2145200714]
+[node name="RadioDevSpinBox" type="SpinBox" parent="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=2145200714]
 layout_mode = 2
 theme = ExtResource("5_8twac")
 min_value = -10.0
@@ -177,10 +186,10 @@ step = 0.1
 value = 0.5
 custom_arrow_step = 0.1
 
-[node name="VBoxContainer5" type="VBoxContainer" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=35194246]
+[node name="VBoxContainer5" type="VBoxContainer" parent="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=35194246]
 layout_mode = 2
 
-[node name="MidaFontLabel" type="Label" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer5" unique_id=975713498]
+[node name="MidaFontLabel" type="Label" parent="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer5" unique_id=975713498]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -189,7 +198,7 @@ theme_override_fonts/font = ExtResource("4_1408v")
 theme_override_font_sizes/font_size = 26
 text = "Mida Font"
 
-[node name="MidaFontSpinBox" type="SpinBox" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer5" unique_id=620576296]
+[node name="MidaFontSpinBox" type="SpinBox" parent="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer5" unique_id=620576296]
 layout_mode = 2
 theme = ExtResource("5_8twac")
 min_value = 10.0
@@ -197,52 +206,52 @@ max_value = 64.0
 value = 20.0
 rounded = true
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1479677608]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1479677608]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 
-[node name="SubViewport" type="SubViewport" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/SubViewportContainer" unique_id=2134294962]
+[node name="SubViewport" type="SubViewport" parent="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/SubViewportContainer" unique_id=2134294962]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(600, 600)
+size = Vector2i(580, 580)
 render_target_update_mode = 4
 
-[node name="Camera3D" type="Camera3D" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/SubViewportContainer/SubViewport" unique_id=1560083255]
+[node name="Camera3D" type="Camera3D" parent="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/SubViewportContainer/SubViewport" unique_id=1560083255]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.466, 0)
 
-[node name="roulette_01" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/SubViewportContainer/SubViewport" unique_id=1633617811 instance=ExtResource("1_aoee0")]
+[node name="roulette_01" parent="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/SubViewportContainer/SubViewport" unique_id=1633617811 instance=ExtResource("1_aoee0")]
 unique_name_in_owner = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/SubViewportContainer/SubViewport" unique_id=1941100956]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/SubViewportContainer/SubViewport" unique_id=1941100956]
 environment = SubResource("Environment_aoee0")
 
-[node name="PanelContainer2" type="PanelContainer" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1874229811]
+[node name="PanelContainer2" type="PanelContainer" parent="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1874229811]
 layout_mode = 2
 theme_override_styles/panel = ExtResource("5_p6mfb")
 
-[node name="MarginContainer" type="MarginContainer" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2" unique_id=1787949551]
+[node name="MarginContainer" type="MarginContainer" parent="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer2" unique_id=1787949551]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2/MarginContainer" unique_id=1249983183]
+[node name="VBoxContainer2" type="VBoxContainer" parent="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer2/MarginContainer" unique_id=1249983183]
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_constants/separation = 10
 
-[node name="ScrollContainer" type="ScrollContainer" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2" unique_id=682511453]
+[node name="ScrollContainer" type="ScrollContainer" parent="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2" unique_id=682511453]
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="SegmentsPropsVBoxContainer" type="VBoxContainer" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2/ScrollContainer" unique_id=924039726]
+[node name="SegmentsPropsVBoxContainer" type="VBoxContainer" parent="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2/ScrollContainer" unique_id=924039726]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="PropsPerSegmentLabel" type="Label" parent="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2/ScrollContainer/SegmentsPropsVBoxContainer" unique_id=656748110]
+[node name="PropsPerSegmentLabel" type="Label" parent="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2/ScrollContainer/SegmentsPropsVBoxContainer" unique_id=656748110]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -270,12 +279,12 @@ dialog_text = "File exists. Overwrite?"
 initial_position = 1
 dialog_text = "Changes not saved will be lost"
 
-[connection signal="index_pressed" from="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/MenuBar/OpcionsMenu" to="." method="_on_opcions_menu_index_pressed"]
-[connection signal="text_changed" from="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3/NomLineEdit" to="." method="_on_nom_line_edit_text_changed"]
-[connection signal="text_changed" from="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer4/DescripcioLineEdit" to="." method="_on_descripcio_line_edit_text_changed"]
-[connection signal="value_changed" from="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/SegmentsSpinBox" to="." method="_on_segments_spin_box_value_changed"]
-[connection signal="value_changed" from="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2/RadioDevSpinBox" to="." method="_on_radio_dev_spin_box_value_changed"]
-[connection signal="value_changed" from="EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer5/MidaFontSpinBox" to="." method="_on_mida_font_spin_box_value_changed"]
+[connection signal="index_pressed" from="EditorUIControl/PanelContainer/VBoxContainer/MenuBar/OpcionsMenu" to="." method="_on_opcions_menu_index_pressed"]
+[connection signal="text_changed" from="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3/NomLineEdit" to="." method="_on_nom_line_edit_text_changed"]
+[connection signal="text_changed" from="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer4/DescripcioLineEdit" to="." method="_on_descripcio_line_edit_text_changed"]
+[connection signal="value_changed" from="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/SegmentsSpinBox" to="." method="_on_segments_spin_box_value_changed"]
+[connection signal="value_changed" from="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2/RadioDevSpinBox" to="." method="_on_radio_dev_spin_box_value_changed"]
+[connection signal="value_changed" from="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer5/MidaFontSpinBox" to="." method="_on_mida_font_spin_box_value_changed"]
 [connection signal="file_selected" from="EditorUIControl/LoadRoulettePopup" to="." method="_on_load_roulette_popup_file_selected"]
 [connection signal="confirmed" from="EditorUIControl/SaveConfirmationDialog" to="." method="_on_save_confirmation_dialog_confirmed"]
 [connection signal="confirmed" from="EditorUIControl/NewConfirmationDialog" to="." method="_on_new_confirmation_dialog_confirmed"]

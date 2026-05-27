@@ -2,6 +2,10 @@
 
 [ext_resource type="Script" uid="uid://d01dlpw4pupv7" path="res://src/scripts/match_player_v_box_container.gd" id="1_aynyf"]
 [ext_resource type="FontFile" uid="uid://bdrkor4sy7njn" path="res://assets/fonts/DejaVuSans.ttf" id="2_pivdd"]
+[ext_resource type="FontFile" uid="uid://dusmx10ps8jrm" path="res://assets/fonts/OpenSans-Bold.ttf" id="3_pbdan"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pbdan"]
+bg_color = Color(1, 1, 1, 1)
 
 [node name="MatchPlayerVBoxContainer" type="VBoxContainer" unique_id=1736111174]
 anchors_preset = 8
@@ -21,7 +25,7 @@ script = ExtResource("1_aynyf")
 [node name="PlayerNameLabel" type="Label" parent="." unique_id=1348804545]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_pivdd")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 26
 text = "Jugador Name Label"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -35,11 +39,12 @@ color = Color(0.4506483, 0.4506483, 0.45064825, 1)
 
 [node name="ResultLabel" type="Label" parent="MarginContainer" unique_id=1338553107]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 1
-theme_override_fonts/font = ExtResource("2_pivdd")
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("3_pbdan")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_pbdan")
 text = "Resultat"
 horizontal_alignment = 1
 vertical_alignment = 1

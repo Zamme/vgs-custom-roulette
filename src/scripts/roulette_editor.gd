@@ -3,11 +3,11 @@ extends Node3D
 
 @onready var roulette_scene : Node3D = %roulette_01
 @onready var segments_props_vbox : VBoxContainer = %SegmentsPropsVBoxContainer
-@onready var nom_line_edit : LineEdit = $EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3/NomLineEdit
-@onready var descripcio_line_edit : LineEdit = $EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer4/DescripcioLineEdit
-@onready var segments_spinbox : SpinBox = $EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/SegmentsSpinBox
-@onready var radiodev_spinbox : SpinBox = $EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2/RadioDevSpinBox
-@onready var fontsize_spinbox : SpinBox = $EditorUIControl/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer5/MidaFontSpinBox
+@onready var nom_line_edit : LineEdit = $EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3/NomLineEdit
+@onready var descripcio_line_edit : LineEdit = $EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer4/DescripcioLineEdit
+@onready var segments_spinbox : SpinBox = $EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/SegmentsSpinBox
+@onready var radiodev_spinbox : SpinBox = $EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2/RadioDevSpinBox
+@onready var fontsize_spinbox : SpinBox = $EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer5/MidaFontSpinBox
 @onready var load_roulette_popup : FileDialog = $EditorUIControl/LoadRoulettePopup
 @onready var save_confirmation_dialog : ConfirmationDialog = $EditorUIControl/SaveConfirmationDialog
 @onready var new_confirmation_dialog : ConfirmationDialog = $EditorUIControl/NewConfirmationDialog

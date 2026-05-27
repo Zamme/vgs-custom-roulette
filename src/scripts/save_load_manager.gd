@@ -80,11 +80,11 @@ func copy_roulette_templates() -> void:
 			_filename = origin_dir.get_next()
 
 func copy_templates() -> void:
-	var dir = DirAccess.open("user://")
-	var roulettes_dest_dir_path : String = USER_PREFIX + ROULETTES_DIRNAME
+	#var dir = DirAccess.open("user://")
+	#var roulettes_dest_dir_path : String = USER_PREFIX + ROULETTES_DIRNAME
 	#if not dir.dir_exists(roulettes_dest_dir_path):
 	copy_roulette_templates()
-	var games_dest_dir_path : String = USER_PREFIX + GAMES_DIRNAME
+	#var games_dest_dir_path : String = USER_PREFIX + GAMES_DIRNAME
 	#if not dir.dir_exists(games_dest_dir_path):
 	copy_game_templates()
 

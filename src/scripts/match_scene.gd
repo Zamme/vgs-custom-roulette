@@ -11,9 +11,9 @@ const default_damp : float = 0.5
 @onready var start_turn_dialog : AcceptDialog = $MatchControl/StartTurnAcceptDialog
 @onready var turn_result_dialog : AcceptDialog = $MatchControl/TurnResultConfirmDialog
 @onready var go_button : GoButton = $MatchControl/GOButton
-@onready var match_popup_menu : PopupMenu = $MatchControl/PanelContainer/MarginContainer/VBoxContainer/MatchMenu/MatchPopupMenu
-@onready var match_properties_popup_menu : PopupMenu = $MatchControl/PanelContainer/MarginContainer/VBoxContainer/MatchMenu/MatchPropertiesPopupMenu
-@onready var state_popup_menu : PopupMenu = $MatchControl/PanelContainer/MarginContainer/VBoxContainer/MatchMenu/StatePopupMenu
+@onready var match_popup_menu : PopupMenu = $MatchControl/PanelContainer/VBoxContainer/MatchMenu/MatchPopupMenu
+@onready var match_properties_popup_menu : PopupMenu = $MatchControl/PanelContainer/VBoxContainer/MatchMenu/MatchPropertiesPopupMenu
+@onready var state_popup_menu : PopupMenu = $MatchControl/PanelContainer/VBoxContainer/MatchMenu/StatePopupMenu
 @onready var report_dialog : ReportConfirmDialog = $MatchControl/ReportConfirmDialog
 
 #@onready var rot_spinbox: SpinBox = $rotationsp
@@ -56,6 +56,7 @@ func enable_popup_menu(_popupmenu : PopupMenu, _enable : bool):
 func finish_match() -> void:
 	print("Match finished")
 	set_match_state(3)
+	match_info.match_turn = 0
 	show_resultats()
 
 func get_segment_result() -> int:

@@ -121,8 +121,8 @@ func _on_new_confirmation_dialog_confirmed() -> void:
 func _on_save_confirmation_dialog_confirmed() -> void:
 	save_game()
 
-func _on_nom_joc_line_edit_editing_toggled(toggled_on: bool) -> void:
+func _on_nom_joc_line_edit_editing_toggled(_toggled_on: bool) -> void:
 	game_info.g_name = nom_joc_lineedit.text
 
-func _on_descripcio_joc_line_edit_editing_toggled(toggled_on: bool) -> void:
+func _on_descripcio_joc_line_edit_editing_toggled(_toggled_on: bool) -> void:
 	game_info.g_description = descripcio_joc_lineedit.text
