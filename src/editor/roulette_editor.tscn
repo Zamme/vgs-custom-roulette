@@ -8,22 +8,13 @@
 [ext_resource type="Theme" uid="uid://doxobflsi0n0h" path="res://src/styles/spins_theme.tres" id="5_8twac"]
 [ext_resource type="StyleBox" uid="uid://d1jkau7a18oan" path="res://src/styles/floating_menus_style_box_flat.tres" id="5_p6mfb"]
 [ext_resource type="StyleBox" uid="uid://dlj4ihxby7bso" path="res://src/styles/top_menu_button_selected_style_box_flat.tres" id="5_xuble"]
+[ext_resource type="PackedScene" uid="uid://emskjy2c64uo" path="res://src/environments/default_world_environment.tscn" id="9_vbwtt"]
+[ext_resource type="PackedScene" uid="uid://1oxv23yhqnub" path="res://src/lights/default_directional_light_3d.tscn" id="10_06f61"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8twac"]
 content_margin_left = 10.0
 content_margin_right = 10.0
 texture = ExtResource("2_1f188")
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nacxe"]
-
-[sub_resource type="Sky" id="Sky_1btgg"]
-sky_material = SubResource("ProceduralSkyMaterial_nacxe")
-
-[sub_resource type="Environment" id="Environment_aoee0"]
-background_mode = 2
-background_color = Color(0.4996245, 0.27093717, 0.16023058, 1)
-sky = SubResource("Sky_1btgg")
-ambient_light_source = 3
 
 [node name="RouletteEditor" type="Node3D" unique_id=287965655]
 script = ExtResource("1_nacxe")
@@ -161,6 +152,14 @@ text = "Segments"
 [node name="SegmentsSpinBox" type="SpinBox" parent="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=117726658]
 layout_mode = 2
 theme = ExtResource("5_8twac")
+theme_override_colors/up_icon_modulate = Color(1, 1, 1, 1)
+theme_override_colors/up_hover_icon_modulate = Color(1, 1, 1, 1)
+theme_override_colors/up_pressed_icon_modulate = Color(1, 1, 1, 1)
+theme_override_colors/up_disabled_icon_modulate = Color(1, 1, 1, 1)
+theme_override_colors/down_icon_modulate = Color(1, 1, 1, 1)
+theme_override_colors/down_hover_icon_modulate = Color(1, 1, 1, 1)
+theme_override_colors/down_pressed_icon_modulate = Color(1, 1, 1, 1)
+theme_override_colors/down_disabled_icon_modulate = Color(1, 1, 1, 1)
 min_value = 2.0
 max_value = 64.0
 value = 3.0
@@ -179,7 +178,16 @@ text = "Radio Dev"
 
 [node name="RadioDevSpinBox" type="SpinBox" parent="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=2145200714]
 layout_mode = 2
+mouse_default_cursor_shape = 9
 theme = ExtResource("5_8twac")
+theme_override_colors/up_icon_modulate = Color(1, 1, 1, 1)
+theme_override_colors/up_hover_icon_modulate = Color(1, 1, 1, 1)
+theme_override_colors/up_pressed_icon_modulate = Color(1, 1, 1, 1)
+theme_override_colors/up_disabled_icon_modulate = Color(1, 1, 1, 1)
+theme_override_colors/down_icon_modulate = Color(1, 1, 1, 1)
+theme_override_colors/down_hover_icon_modulate = Color(1, 1, 1, 1)
+theme_override_colors/down_pressed_icon_modulate = Color(1, 1, 1, 1)
+theme_override_colors/down_disabled_icon_modulate = Color(1, 1, 1, 1)
 min_value = -10.0
 max_value = 10.0
 step = 0.1
@@ -201,6 +209,14 @@ text = "Mida Font"
 [node name="MidaFontSpinBox" type="SpinBox" parent="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer5" unique_id=620576296]
 layout_mode = 2
 theme = ExtResource("5_8twac")
+theme_override_colors/up_icon_modulate = Color(1, 1, 1, 1)
+theme_override_colors/up_hover_icon_modulate = Color(1, 1, 1, 1)
+theme_override_colors/up_pressed_icon_modulate = Color(1, 1, 1, 1)
+theme_override_colors/up_disabled_icon_modulate = Color(1, 1, 1, 1)
+theme_override_colors/down_icon_modulate = Color(1, 1, 1, 1)
+theme_override_colors/down_hover_icon_modulate = Color(1, 1, 1, 1)
+theme_override_colors/down_pressed_icon_modulate = Color(1, 1, 1, 1)
+theme_override_colors/down_disabled_icon_modulate = Color(1, 1, 1, 1)
 min_value = 10.0
 max_value = 64.0
 value = 20.0
@@ -223,8 +239,9 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1
 [node name="roulette_01" parent="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/SubViewportContainer/SubViewport" unique_id=1633617811 instance=ExtResource("1_aoee0")]
 unique_name_in_owner = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/SubViewportContainer/SubViewport" unique_id=1941100956]
-environment = SubResource("Environment_aoee0")
+[node name="DefaultWorldEnvironment" parent="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/SubViewportContainer/SubViewport" unique_id=1798233355 instance=ExtResource("9_vbwtt")]
+
+[node name="DefaultDirectionalLight3D" parent="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer/SubViewportContainer/SubViewport" unique_id=283050902 instance=ExtResource("10_06f61")]
 
 [node name="PanelContainer2" type="PanelContainer" parent="EditorUIControl/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1874229811]
 layout_mode = 2

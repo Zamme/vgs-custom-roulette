@@ -3,10 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://ngu81g8r8l5s" path="res://assets/gltfs/Fork.glb" id="1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ef4fe"]
-shading_mode = 0
-albedo_color = Color(0.74138474, 0.7413847, 0.74138457, 1)
+albedo_color = Color(0.38928655, 0.38928664, 0.3892865, 1)
+metallic = 0.75
+metallic_specular = 0.64
+roughness = 0.36
+disable_receive_shadows = true
 
-[node name="Fork" unique_id=1783277508 instance=ExtResource("1")]
+[node name="Fork" unique_id=884299122 instance=ExtResource("1")]
 
-[node name="Fork" parent="." index="0" unique_id=1417815798]
+[node name="Fork" parent="." index="0" unique_id=1539557485]
 surface_material_override/0 = SubResource("StandardMaterial3D_ef4fe")

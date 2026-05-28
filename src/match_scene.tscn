@@ -1,11 +1,9 @@
 [gd_scene format=3 uid="uid://c6ofog17n55ut"]
 
 [ext_resource type="Script" uid="uid://bgglx85dgnotw" path="res://src/scripts/match_scene.gd" id="1_bmh8m"]
-[ext_resource type="Texture2D" uid="uid://coiv3r6b48is8" path="res://assets/textures/taula_fusta_albedo.png" id="2_00ot4"]
 [ext_resource type="FontFile" uid="uid://bdrkor4sy7njn" path="res://assets/fonts/DejaVuSans.ttf" id="2_7meom"]
 [ext_resource type="Script" uid="uid://c6dstkqh6byno" path="res://src/scripts/match_control.gd" id="2_ah1b0"]
 [ext_resource type="PackedScene" uid="uid://cx4ospfuoteyv" path="res://src/ui/match_player_v_box_container.tscn" id="3_s4p1r"]
-[ext_resource type="Texture2D" uid="uid://cek0niwhg1pw" path="res://assets/textures/taula_fusta_orm.png" id="3_y5sdm"]
 [ext_resource type="Script" uid="uid://cbraaod2783xm" path="res://src/scripts/match_roulette.gd" id="4_3ntpd"]
 [ext_resource type="StyleBox" uid="uid://mul8mp4diwtm" path="res://src/styles/top_menu_button_normal_style_box_flat.tres" id="4_ab0bp"]
 [ext_resource type="PackedScene" uid="uid://bdwbwjk4tymch" path="res://src/roulette/roulette_01.tscn" id="4_y5sdm"]
@@ -17,8 +15,10 @@
 [ext_resource type="Theme" uid="uid://cbb1prdlpxwa2" path="res://src/styles/popups_theme.tres" id="8_06v7e"]
 [ext_resource type="PackedScene" uid="uid://b1tsrrd2rge6u" path="res://src/other/arrow_01.tscn" id="10_an4x1"]
 [ext_resource type="FontFile" uid="uid://dusmx10ps8jrm" path="res://assets/fonts/OpenSans-Bold.ttf" id="10_nk1dw"]
-[ext_resource type="PackedScene" uid="uid://o0lwda8m7o4f" path="res://src/other/Fork.tscn" id="16_hpdgp"]
-[ext_resource type="PackedScene" uid="uid://dinq5j31fgrw" path="res://src/other/KitchenKnife.tscn" id="17_06v7e"]
+[ext_resource type="PackedScene" uid="uid://1oxv23yhqnub" path="res://src/lights/default_directional_light_3d.tscn" id="14_opvg2"]
+[ext_resource type="PackedScene" uid="uid://emskjy2c64uo" path="res://src/environments/default_world_environment.tscn" id="20_opvg2"]
+[ext_resource type="PackedScene" uid="uid://cvv66a7j4yhkk" path="res://src/other/taula.tscn" id="21_i7fn5"]
+[ext_resource type="LightmapGIData" uid="uid://do4y7nbqs2gts" path="res://src/lightmaps/match_scene.lmbake" id="21_n4tne"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3ntpd"]
 content_margin_left = 10.0
@@ -35,16 +35,6 @@ fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_opvg2"]
 bg_color = Color(1, 1, 1, 1)
-
-[sub_resource type="QuadMesh" id="QuadMesh_bmh8m"]
-size = Vector2(5, 5)
-
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_3ntpd"]
-shading_mode = 0
-disable_ambient_light = true
-disable_specular_occlusion = true
-albedo_texture = ExtResource("2_00ot4")
-orm_texture = ExtResource("3_y5sdm")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_3ntpd"]
 height = 0.51
@@ -418,19 +408,13 @@ size_flags_vertical = 3
 [node name="ReportResultHBoxContainer" parent="MatchControl/ReportConfirmDialog/ScrollContainer/ReportsResultsVBoxContainer" unique_id=1258268925 instance=ExtResource("7_ob5my")]
 layout_mode = 2
 
-[node name="Taula" type="MeshInstance3D" parent="." unique_id=952713069]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
-mesh = SubResource("QuadMesh_bmh8m")
-surface_material_override/0 = SubResource("ORMMaterial3D_3ntpd")
-
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1405166598]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.76, 0)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=588050780]
-transform = Transform3D(1, 0, 0, 0, 0.2300667, 0.97317487, 0, -0.97317487, 0.2300667, 0, 4.185, 0)
-visible = false
-light_energy = 10.0
-sky_mode = 1
+[node name="DefaultDirectionalLight3D" parent="." unique_id=283050902 instance=ExtResource("14_opvg2")]
+transform = Transform3D(1, 0, 0, 0, 0.1414369, 0.9899472, 0, -0.9899472, 0.1414369, 0, 4.185, 0)
+
+[node name="taula" parent="." unique_id=948048872 instance=ExtResource("21_i7fn5")]
 
 [node name="MatchRoulette" type="RigidBody3D" parent="." unique_id=1576497822]
 transform = Transform3D(-0.29237175, 0, -0.9563047, 0, 1, 0, 0.9563047, 0, -0.29237175, 0, 0.2640381, 0)
@@ -451,11 +435,11 @@ shape = SubResource("CylinderShape3D_3ntpd")
 [node name="arrow_01" parent="." unique_id=2044049041 instance=ExtResource("10_an4x1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28, 0)
 
-[node name="Fork" parent="." unique_id=1152937941 instance=ExtResource("16_hpdgp")]
-transform = Transform3D(0.205, 0, 0, 0, 0.205, 0, 0, 0, 0.205, -1.8749667, 0.065, 0)
+[node name="DefaultWorldEnvironment" parent="." unique_id=1798233355 instance=ExtResource("20_opvg2")]
 
-[node name="KitchenKnife" parent="." unique_id=679675806 instance=ExtResource("17_06v7e")]
-transform = Transform3D(0.245, 0, 0, 0, 0.245, 0, 0, 0, 0.245, -1.518, 0.025, -0.061)
+[node name="LightmapGI" type="LightmapGI" parent="." unique_id=357467488]
+quality = 0
+light_data = ExtResource("21_n4tne")
 
 [connection signal="index_pressed" from="MatchControl/PanelContainer/VBoxContainer/MatchMenu/MatchPopupMenu" to="." method="_on_match_menu_index_pressed"]
 [connection signal="index_pressed" from="MatchControl/PanelContainer/VBoxContainer/MatchMenu/MatchPropertiesPopupMenu" to="." method="_on_match_properties_popup_menu_index_pressed"]

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cvv66a7j4yhkk"]
+
+[ext_resource type="PackedScene" uid="uid://bqag456ihw2gu" path="res://assets/gltfs/taula.glb" id="1_k78p4"]
+[ext_resource type="Material" uid="uid://c81xw8eursfae" path="res://src/materials/taula_material_3d.tres" id="2_7ul53"]
+
+[node name="taula" unique_id=948048872 instance=ExtResource("1_k78p4")]
+
+[node name="Taula" parent="." index="0" unique_id=1728522086]
+cast_shadow = 0
+surface_material_override/0 = ExtResource("2_7ul53")

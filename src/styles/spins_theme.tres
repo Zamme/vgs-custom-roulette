@@ -2,6 +2,34 @@
 
 [ext_resource type="FontFile" uid="uid://bdrkor4sy7njn" path="res://assets/fonts/DejaVuSans.ttf" id="1_walhc"]
 
+[sub_resource type="ImageTexture" id="ImageTexture_walhc"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_isane"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_x5gj2"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_ju2g5"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_cxb3d"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_8i2hx"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_beq4r"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_byums"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_x2e66"]
+
 [resource]
 default_font = ExtResource("1_walhc")
 default_font_size = 26
+SpinBox/constants/buttons_width = 50
+SpinBox/icons/down = SubResource("ImageTexture_walhc")
+SpinBox/icons/down_disabled = SubResource("ImageTexture_isane")
+SpinBox/icons/down_hover = SubResource("ImageTexture_x5gj2")
+SpinBox/icons/down_pressed = SubResource("ImageTexture_ju2g5")
+SpinBox/icons/up = SubResource("ImageTexture_cxb3d")
+SpinBox/icons/up_disabled = SubResource("ImageTexture_8i2hx")
+SpinBox/icons/up_hover = SubResource("ImageTexture_beq4r")
+SpinBox/icons/up_pressed = SubResource("ImageTexture_byums")
+SpinBox/icons/updown = SubResource("ImageTexture_x2e66")

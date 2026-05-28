@@ -3,24 +3,32 @@
 [ext_resource type="PackedScene" uid="uid://dggrbmqit544k" path="res://assets/gltfs/KitchenKnife.glb" id="1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_01jps"]
-shading_mode = 0
-albedo_color = Color(0.28485027, 0.28485027, 0.28485027, 1)
+albedo_color = Color(0.2123048, 0.21230483, 0.21230477, 1)
+metallic = 0.75
+metallic_specular = 0.64
+roughness = 0.34
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w0ij8"]
-shading_mode = 0
-albedo_color = Color(0.728822, 0.728822, 0.728822, 1)
+albedo_color = Color(0.45840496, 0.45840508, 0.45840478, 1)
+metallic = 0.75
+metallic_specular = 0.64
+roughness = 0.34
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2gjdy"]
-shading_mode = 0
-albedo_color = Color(0.5272024, 0.31050682, 0.11808125, 1)
+albedo_color = Color(0.28930274, 0.28720886, 0.25416046, 1)
+metallic = 0.75
+metallic_specular = 0.64
+roughness = 0.34
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bnox8"]
-shading_mode = 0
-albedo_color = Color(0.5609549, 0.5609549, 0.5609549, 1)
+albedo_color = Color(0.556953, 0.556953, 0.556953, 1)
+metallic = 0.75
+metallic_specular = 0.64
+roughness = 0.34
 
-[node name="KitchenKnife" unique_id=679675806 instance=ExtResource("1")]
+[node name="KitchenKnife" unique_id=602969955 instance=ExtResource("1")]
 
-[node name="knive" parent="." index="0" unique_id=870803933]
+[node name="knive" parent="." index="0" unique_id=685877769]
 surface_material_override/0 = SubResource("StandardMaterial3D_01jps")
 surface_material_override/1 = SubResource("StandardMaterial3D_w0ij8")
 surface_material_override/2 = SubResource("StandardMaterial3D_2gjdy")

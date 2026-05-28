@@ -6,18 +6,19 @@
 [ext_resource type="Material" uid="uid://ce42v8lbs0lbj" path="res://src/materials/roulette_mat.tres" id="3_na1o5"]
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_ac2j2"]
-shading_mode = 0
-albedo_color = Color(1, 0.24705882, 1, 1)
+albedo_color = Color(0.4613061, 0.44239384, 0.3915224, 1)
 
-[node name="roulette_01" unique_id=88176997 instance=ExtResource("1_ehawn")]
+[node name="roulette_01" unique_id=2108245464 instance=ExtResource("1_ehawn")]
 script = ExtResource("2_mx286")
 
-[node name="Roulete" parent="." index="0" unique_id=1710337755]
+[node name="Roulete" parent="." index="0" unique_id=1899302642]
 surface_material_override/0 = ExtResource("3_na1o5")
 
-[node name="Roulete_Center" parent="Roulete" index="0" unique_id=1314051771]
+[node name="Roulete_Center" parent="Roulete" index="0" unique_id=1835514237]
+cast_shadow = 0
 surface_material_override/0 = SubResource("ORMMaterial3D_ac2j2")
 
-[node name="Roulete_001" parent="Roulete/Roulete_Center" index="0" unique_id=1410191963]
+[node name="Roulete_001" parent="Roulete/Roulete_Center" index="0" unique_id=1848961436]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, 0)
 surface_material_override/0 = ExtResource("3_m2xos")

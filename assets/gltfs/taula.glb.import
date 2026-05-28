@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dggrbmqit544k"
-path="res://.godot/imported/KitchenKnife.glb-8399bb2fa01c4cdcfa7460b3e330239c.scn"
+uid="uid://bqag456ihw2gu"
+path="res://.godot/imported/taula.glb-012f40b1149aecc6164bf1940db1a2d9.scn"
 
 [deps]
 
-source_file="res://assets/gltfs/KitchenKnife.glb"
-dest_files=["res://.godot/imported/KitchenKnife.glb-8399bb2fa01c4cdcfa7460b3e330239c.scn"]
+source_file="res://assets/gltfs/taula.glb"
+dest_files=["res://.godot/imported/taula.glb-012f40b1149aecc6164bf1940db1a2d9.scn"]
 
 [params]
 

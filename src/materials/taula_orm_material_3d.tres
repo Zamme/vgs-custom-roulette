@@ -1,0 +1,6 @@
+[gd_resource type="ORMMaterial3D" format=3 uid="uid://care1u4pg6o3k"]
+
+[ext_resource type="Texture2D" uid="uid://coiv3r6b48is8" path="res://assets/textures/taula_fusta_albedo.png" id="1_a6xym"]
+
+[resource]
+albedo_texture = ExtResource("1_a6xym")

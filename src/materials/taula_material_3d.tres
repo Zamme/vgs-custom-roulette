@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c81xw8eursfae"]
+
+[ext_resource type="Texture2D" uid="uid://coiv3r6b48is8" path="res://assets/textures/taula_fusta_albedo.png" id="1_kdjkp"]
+
+[resource]
+albedo_texture = ExtResource("1_kdjkp")
+metallic = 0.44
+metallic_specular = 0.55
+roughness = 0.73
