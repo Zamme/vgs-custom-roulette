@@ -151,7 +151,7 @@ func load_roulette(_roulette_name : String):
 	var _sections_strings : Array = _roulette_file.get_sections()
 	_sections_strings.pop_front()
 	for _section_string in _sections_strings:
-		_segments.append(SegmentInfo.new(_section_string, _roulette_file.get_value(_section_string, "Color")))
+		_segments.append(SegmentInfo.new(_roulette_file.get_value(_section_string, "Name"), _roulette_file.get_value(_section_string, "Color")))
 	var _roulette_info : RouletteInfo = RouletteInfo.new(_roulette_file.get_value("General", "Name", "Ruleta"),
 														_roulette_file.get_value("General", "Description", "Una Ruleta"),
 														_segments,

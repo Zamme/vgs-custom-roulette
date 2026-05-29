@@ -6,7 +6,6 @@
 [ext_resource type="AudioStream" uid="uid://cna8sb3lam1sa" path="res://assets/audio/kitchen_ambient_01.mp3" id="4_dj3nd"]
 [ext_resource type="AudioStream" uid="uid://bh32aj4upuv1g" path="res://assets/audio/car_loop.wav" id="5_2ayg4"]
 [ext_resource type="AudioStream" uid="uid://d4g8qp1s2e3yp" path="res://assets/audio/heyy.wav" id="6_4yxi6"]
-[ext_resource type="AudioStream" uid="uid://dbnsuxn3gxynx" path="res://assets/audio/music_01.mp3" id="7_n4oli"]
 
 [node name="GameManager" type="Node" unique_id=1773128760]
 script = ExtResource("1_x17l7")
@@ -27,4 +26,3 @@ stream = ExtResource("5_2ayg4")
 stream = ExtResource("6_4yxi6")
 
 [node name="MusicAudio" type="AudioStreamPlayer" parent="SoundManager" unique_id=1751453788]
-stream = ExtResource("7_n4oli")

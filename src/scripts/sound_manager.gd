@@ -24,19 +24,20 @@ func play_ambient_audio(_play : bool) -> void:
 			ambient_audio.stream_paused = true
 
 func play_music_audio(_play : bool) -> void:
-	if music_audio.playing:
-		if _play:
-			return
-		else:
-			music_audio.stream_paused = true
-	else:
-		if _play:
-			if music_audio.stream_paused:
-				music_audio.stream_paused = false
-			else:
-				music_audio.play()
-		else:
-			music_audio.stream_paused = true
+	pass
+	#if music_audio.playing:
+		#if _play:
+			#return
+		#else:
+			#music_audio.stream_paused = true
+	#else:
+		#if _play:
+			#if music_audio.stream_paused:
+				#music_audio.stream_paused = false
+			#else:
+				#music_audio.play()
+		#else:
+			#music_audio.stream_paused = true
 
 func play_rolling_audio(_play : bool) -> void:
 	rolling_audio.playing = _play

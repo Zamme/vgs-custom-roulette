@@ -7,32 +7,32 @@ FontSize=16.0
 
 [Andalucia]
 
-Name="Andalucia"
+Name="Andalusia"
 Color=Color(1, 0, 0, 1)
 
 [Aragon]
 
-Name="Aragon"
+Name="Aragó"
 Color=Color(0, 1, 0, 1)
 
 [Asturias]
 
-Name="Asturias"
+Name="Astúries"
 Color=Color(0, 0, 1, 1)
 
 [Cantabria]
 
-Name="Cantabria"
+Name="Cantàbria"
 Color=Color(0.875, 1, 0, 1)
 
 [Castilla Mancha]
 
-Name="Castilla Mancha"
+Name="Castella Manxa"
 Color=Color(0.5, 1, 0, 1)
 
 [Castilla Leon]
 
-Name="Castilla Leon"
+Name="Castella Lleó"
 Color=Color(0.125, 1, 0, 1)
 
 [Extremadura]
@@ -42,7 +42,7 @@ Color=Color(0, 1, 0.25, 1)
 
 [Galicia]
 
-Name="Galicia"
+Name="Galícia"
 Color=Color(0, 1, 0.625, 1)
 
 [Balears]
@@ -52,7 +52,7 @@ Color=Color(0, 1, 1, 1)
 
 [Canarias]
 
-Name="Canarias"
+Name="Canàries"
 Color=Color(0, 0.625, 1, 1)
 
 [La Rioja]
@@ -67,7 +67,7 @@ Color=Color(0.125, 0, 1, 1)
 
 [Murcia]
 
-Name="Murcia"
+Name="Múrcia"
 Color=Color(0.5, 0, 1, 1)
 
 [Navarra]
@@ -77,10 +77,10 @@ Color=Color(0.875, 0, 1, 1)
 
 [Pais Vasc]
 
-Name="Pais Vasc"
+Name="Pais Basc"
 Color=Color(1, 0, 0.75, 1)
 
 [Valencia]
 
-Name="Valencia"
+Name="València"
 Color=Color(1, 0, 0.375, 1)
