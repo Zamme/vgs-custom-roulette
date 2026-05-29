@@ -1,0 +1,45 @@
+name: Deploy Godot Web to Pages
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - build/web/**
+      - .github/workflows/deploy-pages.yml
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Verify exported web build
+        run: |
+          test -f build/web/index.html || (echo "Missing build/web/index.html. Export Web from Godot first." && exit 1)
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/web
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
