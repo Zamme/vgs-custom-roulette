@@ -5,9 +5,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - build/web/**
-      - .github/workflows/deploy-pages.yml
 
 permissions:
   contents: read
@@ -21,6 +18,8 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      GODOT_VERSION: 4.6-stable
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -28,12 +27,45 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Download Godot editor and export templates
+        run: |
+          set -e
+          BASE_URL="https://github.com/godotengine/godot-builds/releases/download/${GODOT_VERSION}"
+          EDITOR_ZIP="Godot_v${GODOT_VERSION}_linux.x86_64.zip"
+          TEMPLATES_TPZ="Godot_v${GODOT_VERSION}_export_templates.tpz"
+
+          curl -sSL "$BASE_URL/$EDITOR_ZIP" -o /tmp/godot.zip
+          curl -sSL "$BASE_URL/$TEMPLATES_TPZ" -o /tmp/godot_templates.tpz
+
+          unzip -q /tmp/godot.zip -d /tmp/godot
+          unzip -q /tmp/godot_templates.tpz -d /tmp/godot_templates
+
+          GODOT_BIN="$(find /tmp/godot -maxdepth 1 -type f -name 'Godot_v*_linux.x86_64' | head -n 1)"
+          if [[ -z "$GODOT_BIN" ]]; then
+            echo "Could not find Godot executable after unzip"
+            exit 1
+          fi
+          chmod +x "$GODOT_BIN"
+          echo "GODOT_BIN=$GODOT_BIN" >> "$GITHUB_ENV"
+
+          TEMPLATE_VERSION_DIR="${GODOT_VERSION/-/.}"
+          EXPORT_TEMPLATES_DIR="$HOME/.local/share/godot/export_templates/$TEMPLATE_VERSION_DIR"
+          mkdir -p "$EXPORT_TEMPLATES_DIR"
+          cp -R /tmp/godot_templates/templates/. "$EXPORT_TEMPLATES_DIR/"
+
+      - name: Export Web build
+        run: |
+          set -e
+          mkdir -p build/web
+          "$GODOT_BIN" --headless --path . --import
+          "$GODOT_BIN" --headless --path . --export-release "Web" build/web/index.html
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Verify exported web build
+      - name: Verify generated web build
         run: |
-          test -f build/web/index.html || (echo "Missing build/web/index.html. Export Web from Godot first." && exit 1)
+          test -f build/web/index.html || (echo "Missing generated build/web/index.html" && exit 1)
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
